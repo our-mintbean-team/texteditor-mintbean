@@ -62,3 +62,109 @@ div.col-xs-9 {
   padding-right: 0 !important;
 }
 /*# sourceMappingURL=App.css.map */
+=======
+  background-color: black;
+  display: flex;
+}
+#header #navbar {
+  display: flex;
+}
+#header #doc-name {
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+}
+
+#actionbar {
+  width: 100%;
+  background-color: dimgray;
+}
+
+.row {
+  margin: 15vh 0 0 0 !important;
+  height: 50vh;
+  display: flex;
+}
+
+#toolbar {
+  width: 5%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#editor {
+  width: 95%;
+  display: flex;
+}
+#editor div {
+  width: 50%;
+  height: 100%;
+}
+#editor #text-editor {
+  background-color: rgba(50, 50, 50, 0.7);
+}
+#editor #text-editor * {
+  width: 100%;
+  height: 100%;
+}
+#editor #text-view {
+  background-color: rgba(100, 100, 100, 0.7);
+}
+
+#game {
+  height: 25%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.font-roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.font-ssp {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.font-ubuntu {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.font-bodini {
+  font-family: "Bodoni Moda", serif;
+}
+
+.font-garamond {
+  font-family: "EB Garamond", serif;
+}
+
+.font-caslon {
+  font-family: "Libre Caslon Text", serif;
+}
+
+.font-small {
+  font-size: x-small;
+}
+
+.font-normal {
+  font-size: medium;
+}
+
+.font-large {
+  font-size: large;
+}
+
+.font-xl {
+  font-size: x-large;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=App.css.map */
