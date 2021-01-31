@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./scss/About.css";
+
 function About() {
   return (
     <div>

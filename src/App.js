@@ -1,7 +1,7 @@
 import "./App.css";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
-import ScrollToTop from "./components/Scroller";
 
+import ScrollToTop from "./components/Scroller";
 import TextEditor from "./pages/TextEditor";
 import LandingPage from "./pages/LandingPage";
 import About from "./pages/About";

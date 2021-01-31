@@ -1,58 +1,47 @@
-import React from 'react'
-import { ButtonGroup, Button } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLink, faPalette, faAlignCenter } from '@fortawesome/free-solid-svg-icons'
 
+import React from "react";
+import { ButtonGroup, Button, DropdownButton, Dropdown } from "react-bootstrap";
+import {
+  FaPalette,
+  FaHighlighter,
+  FaAlignLeft,
+  FaAlignRight,
+  FaAlignCenter,
+  FaAlignJustify,
+} from "react-icons/fa";
 export default function Toolbar() {
-    return (
-        <div id='toolbar'>
-            <ButtonGroup vertical>
-                <Button 
-                    // onclick={}
-                >
-                    <span class='font-caslon'>a</span> <span class='font-ssp font-large'>a</span> <span class='font-roboto font-large'>a</span>
-                </Button>
-                <Button 
-                    // onclick={}
-                >
-                    <span class='font-small'>s</span> <span>s </span><span class='font-xl'>s</span>
-                </Button>
-                <Button 
-                    // onclick={}
-                >
-                    <FontAwesomeIcon icon={faPalette} />
-                </Button>
-                <Button 
-                    // onclick={}
-                >
-                    <span>a</span><span class='text-warning'>a</span><span class='text-danger'>a</span>
-                </Button>
-                <Button 
-                    // onclick={}
-                >
-                    <span class='bold'>B</span>
-                </Button>
-                <Button 
-                    // onclick={}
-                >
-                    <span class='italic'>i</span>
-                </Button>
-                <Button 
-                    // onclick={}
-                >
-                    <span class='text-underline'>u</span>
-                </Button>
-                <Button 
-                    // onclick={}
-                >
-                    <FontAwesomeIcon icon={faLink} />
-                </Button>
-                <Button 
-                    // onclick={}
-                >
-                    <FontAwesomeIcon icon={faAlignCenter} />
-                </Button>
-            </ButtonGroup>
-        </div>
-    )
+  return (
+    <ButtonGroup vertical id="toolbar">
+      <Button variant="secondary">B</Button>
+      <Button variant="secondary">I</Button>
+      <Button variant="secondary">U</Button>
+      <Button variant="secondary">12</Button>
+
+      <DropdownButton
+        as={ButtonGroup}
+        title={FaAlignLeft}
+        variant="secondary"
+        id="bg-nested-dropdown"
+      >
+        <Dropdown.Item eventKey="1">
+          <FaAlignLeft />
+        </Dropdown.Item>
+        <Dropdown.Item eventKey="2">
+          <FaAlignCenter />
+        </Dropdown.Item>
+        <Dropdown.Item eventKey="3">
+          <FaAlignRight />
+        </Dropdown.Item>
+        <Dropdown.Item eventKey="4">
+          <FaAlignJustify />
+        </Dropdown.Item>
+      </DropdownButton>
+      <Button variant="secondary">
+        <FaPalette />
+      </Button>
+      <Button variant="secondary">
+        <FaHighlighter />
+      </Button>
+    </ButtonGroup>
+  );
 }

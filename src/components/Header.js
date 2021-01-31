@@ -1,39 +1,56 @@
-import React from 'react'
-import { Button } from 'react-bootstrap'
-import ContentEditable from 'react-contenteditable'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faICursor, faFileWord, faUserAstronaut } from '@fortawesome/free-solid-svg-icons'
+import React from "react";
+import ContentEditable from "react-contenteditable";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { FaTextWidth, FaFileAlt, FaUserAstronaut } from "react-icons/fa";
 
 class DocNameEditor extends React.Component {
-    constructor() {
-        super();
-        this.state = { html: "DOCUMENT NAME" };
-    }
-    handleChange = evt => {
-        this.setState({ html: evt.target.value });
-    };
-    render = () => {
-        return (
-            <ContentEditable
-                id='doc-name'
-                html={this.state.html} // innerHTML of the editable div
-                disabled={false} // use true to disable edition
-                onChange={this.handleChange} // handle innerHTML change
-            />
-        );
-    };
+  constructor() {
+    super();
+    this.state = { html: "UNTITLED DOCUMENT" };
+  }
+  handleChange = (evt) => {
+    this.setState({ html: evt.target.value });
+  };
+  render = () => {
+    return (
+      <ContentEditable
+        id="doc-name"
+        html={this.state.html} // innerHTML of the editable div
+        disabled={false} // use true to disable edition
+        onChange={this.handleChange} // handle innerHTML change
+      />
+    );
+  };
 }
 
 export default function Header() {
-
-    return (
-        <div id='header'>
-            <div>
-                <Button variant="dark"><FontAwesomeIcon icon={faICursor} /> Editor Name</Button>
-                <Button variant="dark"><FontAwesomeIcon icon={faFileWord} /> Documents</Button>
-            </div>
-            <DocNameEditor />
-            <Button variant="dark"><FontAwesomeIcon icon={faUserAstronaut} /> Login</Button>
-        </div>
-    )
+  return (
+    <Navbar bg="dark" variant="dark" expand="md" className="navbar__container">
+      <Navbar.Brand href="/">
+        <FaTextWidth />
+        Text Editor
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <NavDropdown title="Recent Docs" id="basic-nav-dropdown">
+            <NavDropdown.Item href="/">New Doc</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="/">Docname1</NavDropdown.Item>
+            <NavDropdown.Item href="/">Docname2</NavDropdown.Item>
+            <NavDropdown.Item href="/">Docname3</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+        <DocNameEditor />
+        <Nav className="ml-auto">
+          <Nav.Link href="/">
+            <FaFileAlt />
+          </Nav.Link>
+          <Nav.Link href="/">
+            <FaUserAstronaut />
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  );
 }

@@ -1,132 +1,65 @@
 .main {
-    width:100%;
-    height:100vh;
-    color:white;
-    margin:0;
-    padding:0;
-    background-image: url('./images/bridge.jpg');
-    background-size:cover
+
+  color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./images/bridge.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.875;
+  height: 80vh;
+  width: 100%;
 }
 
-p {
-    margin:0;
+div.col-lg-1,
+div.col-lg-10,
+div.col-lg-11,
+div.col-lg-12,
+div.col-lg-2,
+div.col-lg-3,
+div.col-lg-4,
+div.col-lg-5,
+div.col-lg-6,
+div.col-lg-7,
+div.col-lg-8,
+div.col-lg-9,
+div.col-md-1,
+div.col-md-10,
+div.col-md-11,
+div.col-md-12,
+div.col-md-2,
+div.col-md-3,
+div.col-md-4,
+div.col-md-5,
+div.col-md-6,
+div.col-md-7,
+div.col-md-8,
+div.col-md-9,
+div.col-sm-1,
+div.col-sm-10,
+div.col-sm-11,
+div.col-sm-12,
+div.col-sm-2,
+div.col-sm-3,
+div.col-sm-4,
+div.col-sm-5,
+div.col-sm-6,
+div.col-sm-7,
+div.col-sm-8,
+div.col-sm-9,
+div.col-xs-1,
+div.col-xs-10,
+div.col-xs-11,
+div.col-xs-12,
+div.col-xs-2,
+div.col-xs-3,
+div.col-xs-4,
+div.col-xs-5,
+div.col-xs-6,
+div.col-xs-7,
+div.col-xs-8,
+div.col-xs-9 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-#header {
-    width:100%;
-    background-color: black;
-    display:flex;
-
-    #navbar {
-        display:flex;
-    }
-    #doc-name {
-        
-        margin:0 auto;
-        padding:0.5rem 1rem;
-    }
-}
-
-#actionbar {
-    width:100%;
-    background-color: rgb(105, 105, 105);
-}
-
-.row {
-    margin:15vh 0 0 0 !important;
-    height:50vh;
-    display: flex;
-}
-
-#toolbar {
-    width:5%;
-    height:100%;
-    background-color:rgba(0,0,0,0.8);
-}
-
-#editor {
-    width:95%;
-    display:flex;
-    
-    div {
-        width:50%;
-        height:100%
-    }
-
-    #text-editor {
-        background-color: rgba(50,50,50,0.7);
-        * {
-            width:100%;
-            height:100%
-        }
-    }
-
-    #text-view {
-        background-color: rgba(100,100,100,0.7);
-    }
-}
-
-#game {
-    height:25%;
-    background-color:rgba(0,0,0,0.7)
-}
-
-
-// ████████╗ ██████╗  ██████╗ ██╗     ██████╗  █████╗ ██████╗ 
-// ╚══██╔══╝██╔═══██╗██╔═══██╗██║     ██╔══██╗██╔══██╗██╔══██╗
-//    ██║   ██║   ██║██║   ██║██║     ██████╔╝███████║██████╔╝
-//    ██║   ██║   ██║██║   ██║██║     ██╔══██╗██╔══██║██╔══██╗
-//    ██║   ╚██████╔╝╚██████╔╝███████╗██████╔╝██║  ██║██║  ██║
-//    ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-
-.bold {
-    font-weight:bold;
-}
-
-.italic {
-    font-style:italic;
-}
-
-.font-roboto {
-    font-family: 'Roboto', sans-serif;
-}
-
-.font-ssp {
-    font-family: 'Source Sans Pro', sans-serif;
-}
-
-.font-ubuntu {
-    font-family: 'Ubuntu', sans-serif;
-} 
-
-.font-bodini {
-    font-family: 'Bodoni Moda', serif;
-}
-
-.font-garamond {
-    font-family: 'EB Garamond', serif;
-}
-
-.font-caslon {
-    font-family: 'Libre Caslon Text', serif;
-}
-
-.font-small {
-    font-size: x-small;
-}
-
-.font-normal {
-    font-size: medium;
-}
-
-.font-large {
-    font-size: large;
-}
-
-.font-xl {
-    font-size: x-large;
-}
-
-.text-underline {
-    text-decoration: underline;
-}
