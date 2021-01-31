@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.main {
+  width: 100vw;
+  height: 100vh;
   color: white;
+  margin: 0;
+  padding: 0;
+  background-image: url("./images/bridge.jpg");
+  background-size: cover;
 }
 
-.App-link {
-  color: #61dafb;
+p {
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#header {
+  width: 100%;
+  height: 5%;
+  background-color: black;
+  display: flex;
 }
+#header #navbar {
+  display: flex;
+}
+#header #doc-name {
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+}
+
+#actionbar {
+  width: 100%;
+  height: 5%;
+  background-color: dimgray;
+}
+
+.row {
+  margin-top: 15%;
+  height: 50vh;
+  display: flex;
+}
+
+#toolbar {
+  width: 5vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+#editor {
+  width: 95vw;
+  display: flex;
+}
+#editor div {
+  width: 50%;
+  height: 100%;
+}
+#editor #text-editor {
+  background-color: rgba(50, 50, 50, 0.7);
+}
+#editor #text-editor * {
+  width: 100%;
+  height: 100%;
+}
+#editor #text-view {
+  background-color: rgba(100, 100, 100, 0.7);
+}
+
+#game {
+  height: 25%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/*# sourceMappingURL=App.css.map */
