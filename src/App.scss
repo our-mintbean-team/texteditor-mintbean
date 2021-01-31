@@ -1,12 +1,11 @@
 .main {
-    width:100vw;
+    width:100%;
     height:100vh;
     color:white;
     margin:0;
     padding:0;
     background-image: url('./images/bridge.jpg');
     background-size:cover
-
 }
 
 p {
@@ -15,7 +14,6 @@ p {
 
 #header {
     width:100%;
-    height:5%;
     background-color: black;
     display:flex;
 
@@ -31,25 +29,23 @@ p {
 
 #actionbar {
     width:100%;
-    height:5%;
     background-color: rgb(105, 105, 105);
 }
 
 .row {
-    margin-top:15%;
+    margin:15vh 0 0;
     height:50vh;
     display: flex;
 }
 
 #toolbar {
-    width:5vw;
+    width:5%;
     height:100%;
     background-color:rgba(0,0,0,0.9)
 }
 
 #editor {
-    width:95vw;
-    // border: 1px solid black;
+    width:95%;
     display:flex;
     
     div {
