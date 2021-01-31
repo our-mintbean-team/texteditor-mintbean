@@ -3,6 +3,7 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import ScrollToTop from "./components/Scroller";
 
 import TextEditor from "./pages/TextEditor";
+import LandingPage from "./pages/LandingPage";
 import About from "./pages/About";
 
 function App() {
@@ -11,9 +12,7 @@ function App() {
       <Router>
         <ScrollToTop />
         <Switch>
-          {/*
-          <Route path="/home" component={Homepage} />
-        */}
+          <Route path="/home" component={LandingPage} />
           <Route path="/about" component={About} />
           <Route path="/" component={TextEditor} />
         </Switch>
