@@ -33,7 +33,7 @@ p {
 }
 
 .row {
-    margin:15vh 0 0;
+    margin:15vh 0 0 0 !important;
     height:50vh;
     display: flex;
 }
@@ -41,7 +41,7 @@ p {
 #toolbar {
     width:5%;
     height:100%;
-    background-color:rgba(0,0,0,0.9)
+    background-color:rgba(0,0,0,0.8);
 }
 
 #editor {
@@ -69,4 +69,64 @@ p {
 #game {
     height:25%;
     background-color:rgba(0,0,0,0.7)
+}
+
+
+// ████████╗ ██████╗  ██████╗ ██╗     ██████╗  █████╗ ██████╗ 
+// ╚══██╔══╝██╔═══██╗██╔═══██╗██║     ██╔══██╗██╔══██╗██╔══██╗
+//    ██║   ██║   ██║██║   ██║██║     ██████╔╝███████║██████╔╝
+//    ██║   ██║   ██║██║   ██║██║     ██╔══██╗██╔══██║██╔══██╗
+//    ██║   ╚██████╔╝╚██████╔╝███████╗██████╔╝██║  ██║██║  ██║
+//    ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+
+.bold {
+    font-weight:bold;
+}
+
+.italic {
+    font-style:italic;
+}
+
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.font-ssp {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.font-ubuntu {
+    font-family: 'Ubuntu', sans-serif;
+} 
+
+.font-bodini {
+    font-family: 'Bodoni Moda', serif;
+}
+
+.font-garamond {
+    font-family: 'EB Garamond', serif;
+}
+
+.font-caslon {
+    font-family: 'Libre Caslon Text', serif;
+}
+
+.font-small {
+    font-size: x-small;
+}
+
+.font-normal {
+    font-size: medium;
+}
+
+.font-large {
+    font-size: large;
+}
+
+.font-xl {
+    font-size: x-large;
+}
+
+.text-underline {
+    text-decoration: underline;
 }
