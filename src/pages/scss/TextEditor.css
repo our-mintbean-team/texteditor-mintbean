@@ -68,11 +68,16 @@
   background-color: #495057;
 }
 
-/*
-#toolbar {
-    width:5vw;
-    height:100%;
-    background-color:rgba(0,0,0,0.9)
+#toolbar .dropdown-item {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
 }
-*/
+
+#toolbar .dropdown-menu {
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
 /*# sourceMappingURL=TextEditor.css.map */
