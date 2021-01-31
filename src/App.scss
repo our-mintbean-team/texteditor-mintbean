@@ -1,76 +1,63 @@
 .main {
-    width:100vw;
-    height:100vh;
-    color:white;
-    margin:0;
-    padding:0;
-    background-image: url('./images/bridge.jpg');
-    background-size:cover
-
+  color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./images/bridge.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.875;
+  height: 80vh;
+  width: 100%;
 }
 
-p {
-    margin:0;
-}
-
-#header {
-    width:100%;
-    height:5%;
-    background-color: black;
-    display:flex;
-
-    #navbar {
-        display:flex;
-    }
-    #doc-name {
-        
-        margin:0 auto;
-        padding:0.5rem 1rem;
-    }
-}
-
-#actionbar {
-    width:100%;
-    height:5%;
-    background-color: rgb(105, 105, 105);
-}
-
-.row {
-    margin-top:15%;
-    height:50vh;
-    display: flex;
-}
-
-#toolbar {
-    width:5vw;
-    height:100%;
-    background-color:rgba(0,0,0,0.9)
-}
-
-#editor {
-    width:95vw;
-    // border: 1px solid black;
-    display:flex;
-    
-    div {
-        width:50%;
-        height:100%
-    }
-
-    #text-editor {
-        background-color: rgba(50,50,50,0.7);
-        * {
-            width:100%;
-            height:100%
-        }
-    }
-
-    #text-view {
-        background-color: rgba(100,100,100,0.7);
-    }
-}
-
-#game {
-    height:25%;
-    background-color:rgba(0,0,0,0.7)
+div.col-lg-1,
+div.col-lg-10,
+div.col-lg-11,
+div.col-lg-12,
+div.col-lg-2,
+div.col-lg-3,
+div.col-lg-4,
+div.col-lg-5,
+div.col-lg-6,
+div.col-lg-7,
+div.col-lg-8,
+div.col-lg-9,
+div.col-md-1,
+div.col-md-10,
+div.col-md-11,
+div.col-md-12,
+div.col-md-2,
+div.col-md-3,
+div.col-md-4,
+div.col-md-5,
+div.col-md-6,
+div.col-md-7,
+div.col-md-8,
+div.col-md-9,
+div.col-sm-1,
+div.col-sm-10,
+div.col-sm-11,
+div.col-sm-12,
+div.col-sm-2,
+div.col-sm-3,
+div.col-sm-4,
+div.col-sm-5,
+div.col-sm-6,
+div.col-sm-7,
+div.col-sm-8,
+div.col-sm-9,
+div.col-xs-1,
+div.col-xs-10,
+div.col-xs-11,
+div.col-xs-12,
+div.col-xs-2,
+div.col-xs-3,
+div.col-xs-4,
+div.col-xs-5,
+div.col-xs-6,
+div.col-xs-7,
+div.col-xs-8,
+div.col-xs-9 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
