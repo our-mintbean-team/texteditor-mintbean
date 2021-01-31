@@ -1,25 +1,23 @@
-import './App.css';
-import Header from './components/Header'
-import ActionBar from './components/ActionBar'
-import Toolbar from './components/Toolbar'
-import Editor from './components/Editor'
-import Game from './components/Game'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import ScrollToTop from "./components/Scroller";
+
+import TextEditor from "./pages/TextEditor";
+import About from "./pages/About";
 
 function App() {
   return (
     <div className="App">
-      <div className="main">
-        <Header />
-        <ActionBar />
-
-        <div className="row">
-          <Toolbar />
-          <Editor />
-        </div>
-
-        <Game />
-      </div>
+      <Router>
+        <ScrollToTop />
+        <Switch>
+          {/*
+          <Route path="/home" component={Homepage} />
+        */}
+          <Route path="/about" component={About} />
+          <Route path="/" component={TextEditor} />
+        </Switch>
+      </Router>
     </div>
   );
 }
