@@ -1,19 +1,16 @@
 import React from "react";
-import { ButtonGroup, Button, DropdownButton, Dropdown } from "react-bootstrap";
+import { ButtonGroup, Button, Dropdown } from "react-bootstrap";
 import {
   FaFont,
   FaPalette,
-  FaHighlighter,
   FaAlignLeft,
   FaAlignRight,
   FaAlignCenter,
   FaAlignJustify,
-  FaLink
+  FaLink,
 } from "react-icons/fa";
-import {
-  AiOutlineFontSize
-} from 'react-icons/ai';
 
+import { AiOutlineFontSize } from "react-icons/ai";
 
 export default function Toolbar() {
 
@@ -28,13 +25,9 @@ export default function Toolbar() {
       <Button id='bold' variant="secondary">B</Button>
       <Button id='italics' variant="secondary">I</Button>
       <Button id='underline' variant="secondary">U</Button>
-      {/* <Button variant="secondary">12</Button> */}
 
       <Dropdown as={ButtonGroup}>
-        <Button 
-          variant="secondary"
-          id="bg-nested-dropdown"
-          >
+        <Button variant="secondary" id="bg-nested-dropdown">
           <FaAlignLeft />
         </Button>
         <Dropdown.Toggle split variant="secondary" id="dropdown-split-basic" />
@@ -57,9 +50,6 @@ export default function Toolbar() {
       <Button  id='change-color' variant="secondary">
         <FaPalette />
       </Button>
-      {/* <Button variant="secondary">
-        <FaHighlighter />
-      </Button> */}
       <Button id='add-hyperlink' variant="secondary">
         <FaLink />
       </Button>
