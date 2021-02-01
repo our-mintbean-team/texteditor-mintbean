@@ -1,6 +1,5 @@
 import React from 'react';
-import Header from '../components/Header';
-import { Button, ButtonGroup, Navbar } from 'react-bootstrap';
+import { Button, ButtonGroup, Card, Navbar } from 'react-bootstrap';
 import WalkingBook from '../images/walking-book.jpeg';
 
 function LandingPage() {
@@ -21,6 +20,63 @@ function LandingPage() {
             <Button>Get Sarted</Button>
             <Button>Change Theme</Button>
           </ButtonGroup>
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col-md-5'>
+          <h2>Feature Peak</h2>
+        </div>
+        <div className='col-md-5'>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate
+            quos quam ea architecto porro modi exercitationem aut quidem!
+            Maxime, quibusdam!
+          </p>
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col-md-5'>
+          <h3>Who we are</h3>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Voluptatibus repellendus necessitatibus inventore exercitationem,
+            eligendi enim. Ipsam a veritatis sit sapiente?
+          </p>
+        </div>
+        <div className='col-md-5 d-flex'>
+          <Card style={{ width: '120px' }}>
+            <Card.Img />
+            <Card.Body>
+              <Card.Title>Name</Card.Title>
+              <Card.Text>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Similique nostrum ratione quia sequi nisi tempora?
+              </Card.Text>
+              <Button>View Profile</Button>
+            </Card.Body>
+          </Card>
+          <Card style={{ width: '120px' }}>
+            <Card.Img />
+            <Card.Body>
+              <Card.Title>Name</Card.Title>
+              <Card.Text>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Similique nostrum ratione quia sequi nisi tempora?
+              </Card.Text>
+              <Button>View Profile</Button>
+            </Card.Body>
+          </Card>
+          <Card style={{ width: '120px' }}>
+            <Card.Img />
+            <Card.Body>
+              <Card.Title>Name</Card.Title>
+              <Card.Text>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Similique nostrum ratione quia sequi nisi tempora?
+              </Card.Text>
+              <Button>View Profile</Button>
+            </Card.Body>
+          </Card>
         </div>
       </div>
     </div>
