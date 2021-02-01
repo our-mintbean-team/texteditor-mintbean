@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonGroup, Card, Navbar } from 'react-bootstrap';
+import { Button, ButtonGroup, Card, CardDeck, Navbar } from 'react-bootstrap';
 import WalkingBook from '../images/walking-book.jpeg';
 
 function LandingPage() {
@@ -44,39 +44,41 @@ function LandingPage() {
           </p>
         </div>
         <div className='col-md-5 d-flex'>
-          <Card style={{ width: '120px' }}>
-            <Card.Img />
-            <Card.Body>
-              <Card.Title>Name</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Similique nostrum ratione quia sequi nisi tempora?
-              </Card.Text>
-              <Button>View Profile</Button>
-            </Card.Body>
-          </Card>
-          <Card style={{ width: '120px' }}>
-            <Card.Img />
-            <Card.Body>
-              <Card.Title>Name</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Similique nostrum ratione quia sequi nisi tempora?
-              </Card.Text>
-              <Button>View Profile</Button>
-            </Card.Body>
-          </Card>
-          <Card style={{ width: '120px' }}>
-            <Card.Img />
-            <Card.Body>
-              <Card.Title>Name</Card.Title>
-              <Card.Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Similique nostrum ratione quia sequi nisi tempora?
-              </Card.Text>
-              <Button>View Profile</Button>
-            </Card.Body>
-          </Card>
+          <CardDeck>
+            <Card>
+              <Card.Img />
+              <Card.Body>
+                <Card.Title>Name</Card.Title>
+                <Card.Text>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Similique nostrum ratione quia sequi nisi tempora?
+                </Card.Text>
+                <Button>View Profile</Button>
+              </Card.Body>
+            </Card>
+            <Card>
+              <Card.Img />
+              <Card.Body>
+                <Card.Title>Name</Card.Title>
+                <Card.Text>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Similique nostrum ratione quia sequi nisi tempora?
+                </Card.Text>
+                <Button>View Profile</Button>
+              </Card.Body>
+            </Card>
+            <Card>
+              <Card.Img />
+              <Card.Body>
+                <Card.Title>Name</Card.Title>
+                <Card.Text>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Similique nostrum ratione quia sequi nisi tempora?
+                </Card.Text>
+                <Button>View Profile</Button>
+              </Card.Body>
+            </Card>
+          </CardDeck>
         </div>
       </div>
     </div>
