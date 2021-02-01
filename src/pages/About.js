@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
 
-import AboutNavbar from "../components/AboutNavbar";
+import UniversalNavbar from "../components/UniversalNavbar";
 
 import zay from "../images/zay-headshot.jpg";
 import dan from "../images/dan-headshot.jpg";
@@ -16,7 +16,7 @@ function About() {
   return (
     <Container fluid={true} className="about__container">
       <Row>
-        <AboutNavbar />
+        <UniversalNavbar />
       </Row>
       <Row>
         <Col>
