@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ContentEditable from "react-contenteditable";
 
-function EditorDivFunctional ({ currentDoc:{ id, title, text }, updateDoc }) {
+function EditorDivFunctional ({ currentDoc:{ id, title, text }, updateDoc, updateSelection }) {
   return (
     <ContentEditable
       id='theText'
@@ -18,11 +18,11 @@ function EditorDivFunctional ({ currentDoc:{ id, title, text }, updateDoc }) {
   );
 };
 
-export default function Editor({ currentDoc, updateDoc }) {
+export default function Editor({ currentDoc, updateDoc, selectedText, updateSelection }) {
 
   return (
-    <div id="text-editor">
-      <EditorDivFunctional currentDoc={currentDoc} updateDoc={updateDoc} />
+    <div id="text-editor" >
+      <EditorDivFunctional currentDoc={currentDoc} updateDoc={updateDoc} updateSelection={updateSelection} />
     </div>
   );
 }

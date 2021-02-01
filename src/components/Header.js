@@ -25,7 +25,7 @@ function DocNameEditor ({ currentDoc:{ id, title, text }, updateDoc }) {
   );
 };
 
-export default function Header({ currentDoc, updateDoc }) {
+export default function Header({ currentDoc, updateDoc, user }) {
   const { id, 
     title, 
     text, 

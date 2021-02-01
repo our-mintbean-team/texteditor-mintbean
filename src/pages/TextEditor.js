@@ -11,9 +11,11 @@ import Game from "../components/Game";
 import "./scss/TextEditor.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 function TextEditor() {
-  const [user, changeUser] = useState({
+  const [user, updateUser] = useState({
     id:1,
+    username:'Todd',
     documents:[
       1,
       2,
@@ -26,12 +28,13 @@ function TextEditor() {
     text:'Insert Text Here',  // String
     lastSave:Date.now() // Date
   });
+  const [selectedText, updateSelection] = useState('');
 
   return (
-    <div>
+    <div onMouseUp={() => updateSelection(window.getSelection().toString())}>
       <Container fluid={true} className="main">
         <Row>
-          <Header currentDoc={currentDoc} updateDoc={updateDoc}  />
+          <Header currentDoc={currentDoc} updateDoc={updateDoc} user={user} updateUser={updateUser} />
         </Row>
 
         <Row>
@@ -47,7 +50,7 @@ function TextEditor() {
         <Row>
           <Toolbar />
           <Col sm={12} md={6}>
-            <Editor currentDoc={currentDoc} updateDoc={updateDoc} />
+            <Editor currentDoc={currentDoc} updateDoc={updateDoc} selectedText={selectedText} updateSelection={updateSelection} />
           </Col>
           <Col sm={12} md={6}>
             <LivePreview text={currentDoc.text} />
@@ -59,7 +62,9 @@ function TextEditor() {
         <Row>
           <p>Title: {currentDoc.title} - 
           Text: {currentDoc.text} - 
-          Last Save:{currentDoc.lastSave} </p>
+          Last Save:{currentDoc.lastSave} - 
+          Selection:{selectedText.toString()} 
+          </p>
           <Game />
         </Row>
       </Container>
