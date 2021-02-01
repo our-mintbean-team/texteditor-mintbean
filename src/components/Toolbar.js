@@ -13,18 +13,21 @@ import {
 import {
   AiOutlineFontSize
 } from 'react-icons/ai';
+
+
 export default function Toolbar() {
+
   return (
     <ButtonGroup vertical id="toolbar">
-      <Button variant="secondary">
+      <Button id='change-font' variant="secondary">
         <FaFont />
       </Button>
-      <Button variant="secondary">
+      <Button id='change-font-size' variant="secondary">
         <AiOutlineFontSize />
       </Button>
-      <Button variant="secondary">B</Button>
-      <Button variant="secondary">I</Button>
-      <Button variant="secondary">U</Button>
+      <Button id='bold' variant="secondary">B</Button>
+      <Button id='italics' variant="secondary">I</Button>
+      <Button id='underline' variant="secondary">U</Button>
       {/* <Button variant="secondary">12</Button> */}
 
       <Dropdown as={ButtonGroup}>
@@ -36,28 +39,28 @@ export default function Toolbar() {
         </Button>
         <Dropdown.Toggle split variant="secondary" id="dropdown-split-basic" />
         <Dropdown.Menu>
-          <Dropdown.Item eventKey="1">
+          <Dropdown.Item id='align-left' eventKey="1">
             <FaAlignLeft />
           </Dropdown.Item>
-          <Dropdown.Item eventKey="2">
+          <Dropdown.Item id='align-center' eventKey="2">
             <FaAlignCenter />
           </Dropdown.Item>
-          <Dropdown.Item eventKey="3">
+          <Dropdown.Item id='align-right' eventKey="3">
             <FaAlignRight />
           </Dropdown.Item>
-          <Dropdown.Item eventKey="4">
+          <Dropdown.Item id='justify' eventKey="4">
             <FaAlignJustify />
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
 
-      <Button variant="secondary">
+      <Button  id='change-color' variant="secondary">
         <FaPalette />
       </Button>
       {/* <Button variant="secondary">
         <FaHighlighter />
       </Button> */}
-      <Button variant="secondary">
+      <Button id='add-hyperlink' variant="secondary">
         <FaLink />
       </Button>
     </ButtonGroup>

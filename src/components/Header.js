@@ -2,7 +2,13 @@ import React from "react";
 import ContentEditable from "react-contenteditable";
 import { Button, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { FaTextWidth, FaFileAlt, FaUserAstronaut } from "react-icons/fa";
+import { GrLogout } from "react-icons/gr";
 import swal from 'sweetalert';
+
+
+function logoutModal () {
+  swal('Logout on click')
+}
 
 function loginModal () {
   swal('Put Register/Login here')
@@ -44,9 +50,7 @@ export default function Header({ currentDoc, updateDoc, user }) {
           <NavDropdown title="Recent Docs" id="basic-nav-dropdown">
             <NavDropdown.Item href="/">New Doc</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="/">Docname1</NavDropdown.Item>
-            <NavDropdown.Item href="/">Docname2</NavDropdown.Item>
-            <NavDropdown.Item href="/">Docname3</NavDropdown.Item>
+            {( user.documents.length>0 ) && user.documents.map(id => <NavDropdown.Item>{id}</NavDropdown.Item>)}
           </NavDropdown>
         </Nav>
         <DocNameEditor currentDoc={currentDoc} updateDoc={updateDoc} />
@@ -54,9 +58,18 @@ export default function Header({ currentDoc, updateDoc, user }) {
           <Nav.Link href="/">
             <FaFileAlt />
           </Nav.Link>
-          <Button  variant="secondary" onClick={ () => loginModal() } >
-            <FaUserAstronaut />
-          </Button>
+          {user ? 
+          (<>
+            <p>Hi {user.name}</p>
+            <Button  variant="secondary" onClick={ () => logoutModal() } >
+              <GrLogout /> Logout
+            </Button>
+          </>)
+          :
+          (<Button  variant="secondary" onClick={ () => loginModal() } >
+            <FaUserAstronaut /> Login/Register
+          </Button>)
+          }
         </Nav>
       </Navbar.Collapse>
     </Navbar>

@@ -15,15 +15,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function TextEditor() {
   const [user, updateUser] = useState({
     id:1,
-    username:'Todd',
+    name:'Todd',
     documents:[
-      1,
-      2,
-      3
+      'Docname 1',
+      'Docname 2',
+      'Docname 3'
     ] // Array of ObjectIds
   });  // ObjectId
   const [currentDoc, updateDoc] = useState({
-    id:'1', // ObjectId
+    id:1, // ObjectId
     title:'Document Name', // String
     text:'Insert Text Here',  // String
     lastSave:Date.now() // Date
@@ -31,7 +31,10 @@ function TextEditor() {
   const [selectedText, updateSelection] = useState('');
 
   return (
-    <div onMouseUp={() => updateSelection(window.getSelection().toString())}>
+    <div onMouseUp={() => {
+      updateSelection(window.getSelection().toString());
+      console.log(window.getSelection())
+    }}>
       <Container fluid={true} className="main">
         <Row>
           <Header currentDoc={currentDoc} updateDoc={updateDoc} user={user} updateUser={updateUser} />
@@ -60,10 +63,10 @@ function TextEditor() {
 
       <Container fluid={true} className="game__bg">
         <Row>
-          <p>Title: {currentDoc.title} - 
-          Text: {currentDoc.text} - 
-          Last Save:{currentDoc.lastSave} - 
-          Selection:{selectedText.toString()} 
+          <p><strong>Title</strong>: {currentDoc.title} - 
+          <strong>Text</strong>: {currentDoc.text} - 
+          <strong>Last Save</strong>:{currentDoc.lastSave} - 
+          <strong>Selection</strong>:{selectedText.toString()} 
           </p>
           <Game />
         </Row>

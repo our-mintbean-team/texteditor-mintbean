@@ -1,9 +1,9 @@
 import React from "react";
 
-function LivePreview() {
+function LivePreview({ text }) {
   return (
     <div className="text-view">
-      <p>Text is viewed here</p>
+
     </div>
   );
 }
