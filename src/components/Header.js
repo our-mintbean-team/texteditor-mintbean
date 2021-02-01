@@ -33,6 +33,9 @@ export default function Header() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
+        <Nav.Link href="/about">
+            About
+          </Nav.Link>
           <NavDropdown title="Recent Docs" id="basic-nav-dropdown">
             <NavDropdown.Item href="/">New Doc</NavDropdown.Item>
             <NavDropdown.Divider />
