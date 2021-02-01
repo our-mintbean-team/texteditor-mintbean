@@ -44,4 +44,8 @@
       -ms-flex-align: center;
           align-items: center;
 }
+
+.swal-footer {
+  text-align: center;
+}
 /*# sourceMappingURL=About.css.map */

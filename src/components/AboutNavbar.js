@@ -1,4 +1,5 @@
 import React from "react";
+import swal from "sweetalert";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { FaTextWidth, FaFileAlt, FaUserAstronaut } from "react-icons/fa";
 
@@ -12,9 +13,7 @@ export default function AboutNavbar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/">
-            Live Editor
-          </Nav.Link>
+          <Nav.Link href="/">Live Editor</Nav.Link>
           <NavDropdown title="Recent Docs" id="basic-nav-dropdown">
             <NavDropdown.Item href="/">New Doc</NavDropdown.Item>
             <NavDropdown.Divider />
@@ -24,10 +23,26 @@ export default function AboutNavbar() {
           </NavDropdown>
         </Nav>
         <Nav className="ml-auto">
-          <Nav.Link href="/">
+          <Nav.Link
+            onClick={() => {
+              swal({
+                title: "You're not signed in!",
+                text:
+                  "You need to log in or sign up in order to view all your docs.",
+                icon: "error",
+                button: "Log In / Sign Up",
+              });
+            }}
+          >
             <FaFileAlt />
           </Nav.Link>
-          <Nav.Link href="/">
+          <Nav.Link
+            onClick={() => {
+              swal("Sign-Up / Login", {
+                buttons: ["Gmail", "Github"],
+              });
+            }}
+          >
             <FaUserAstronaut />
           </Nav.Link>
         </Nav>
