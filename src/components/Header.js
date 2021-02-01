@@ -45,7 +45,7 @@ export default function Header({ currentDoc, updateDoc, user }) {
           <NavDropdown title="Recent Docs" id="basic-nav-dropdown">
             <NavDropdown.Item href="/">New Doc</NavDropdown.Item>
             <NavDropdown.Divider />
-            {( user.documents.length>0 ) && user.documents.map(id => <NavDropdown.Item>{id}</NavDropdown.Item>)}
+            {( user.documents.length>0 ) && user.documents.map(id => <NavDropdown.Item key={id}>{id}</NavDropdown.Item>)}
           </NavDropdown>
         </Nav>
         <DocNameEditor currentDoc={currentDoc} updateDoc={updateDoc} />

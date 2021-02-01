@@ -16,6 +16,12 @@ import {
 
 export default function Toolbar() {
 
+  function styleString () {
+    // input: text; selection or indexes; html to add
+      
+    //output: the text, now with the html added at the specified indexes
+  }
+
   return (
     <ButtonGroup vertical id="toolbar">
       <Button id='change-font' variant="secondary">

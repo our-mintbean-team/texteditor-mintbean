@@ -14,11 +14,12 @@ function EditorDivFunctional ({ currentDoc:{ id, title, text }, updateDoc, updat
         text: e.target.value, 
         lastSave: Date.now() 
       })} // handle innerHTML change
+      // onMouseUp={ () => { updateSelection( window.getSelection() ) } } 
     />
   );
 };
 
-export default function Editor({ currentDoc, updateDoc, selectedText, updateSelection }) {
+export default function Editor({ currentDoc, updateDoc, updateSelection }) {
 
   return (
     <div id="text-editor" >
