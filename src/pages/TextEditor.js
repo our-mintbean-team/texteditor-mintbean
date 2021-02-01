@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 import Header from "../components/Header";
@@ -12,11 +12,26 @@ import "./scss/TextEditor.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function TextEditor() {
+  const [user, changeUser] = useState({
+    id:1,
+    documents:[
+      1,
+      2,
+      3
+    ] // Array of ObjectIds
+  });  // ObjectId
+  const [currentDoc, updateDoc] = useState({
+    id:'1', // ObjectId
+    title:'Document Name', // String
+    text:'Insert Text Here',  // String
+    lastSave:Date.now() // Date
+  });
+
   return (
     <div>
       <Container fluid={true} className="main">
         <Row>
-          <Header />
+          <Header currentDoc={currentDoc} updateDoc={updateDoc}  />
         </Row>
 
         <Row>
@@ -32,16 +47,19 @@ function TextEditor() {
         <Row>
           <Toolbar />
           <Col sm={12} md={6}>
-            <Editor />
+            <Editor currentDoc={currentDoc} updateDoc={updateDoc} />
           </Col>
           <Col sm={12} md={6}>
-            <LivePreview />
+            <LivePreview text={currentDoc.text} />
           </Col>
         </Row>
       </Container>
 
       <Container fluid={true} className="game__bg">
         <Row>
+          <p>Title: {currentDoc.title} - 
+          Text: {currentDoc.text} - 
+          Last Save:{currentDoc.lastSave} </p>
           <Game />
         </Row>
       </Container>

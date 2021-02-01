@@ -1,29 +1,37 @@
 import React from "react";
 import ContentEditable from "react-contenteditable";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Button, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { FaTextWidth, FaFileAlt, FaUserAstronaut } from "react-icons/fa";
+import swal from 'sweetalert';
 
-class DocNameEditor extends React.Component {
-  constructor() {
-    super();
-    this.state = { html: "UNTITLED DOCUMENT" };
-  }
-  handleChange = (evt) => {
-    this.setState({ html: evt.target.value });
-  };
-  render = () => {
-    return (
-      <ContentEditable
-        id="doc-name"
-        html={this.state.html} // innerHTML of the editable div
-        disabled={false} // use true to disable edition
-        onChange={this.handleChange} // handle innerHTML change
-      />
-    );
-  };
+function loginModal () {
+  swal('Put Register/Login here')
 }
 
-export default function Header() {
+function DocNameEditor ({ currentDoc:{ id, title, text }, updateDoc }) {
+  return (
+    <ContentEditable
+      id='theTitle'
+      className="title__editor"
+      html={title} // innerHTML of the editable div
+      disabled={false} // use true to disable edition
+      onChange={(e) => updateDoc({ 
+        id, 
+        title: e.target.value, 
+        text,
+        lastSave: Date.now() 
+      })} // handle innerHTML change
+    />
+  );
+};
+
+export default function Header({ currentDoc, updateDoc }) {
+  const { id, 
+    title, 
+    text, 
+    lastSave
+  } = currentDoc;
+
   return (
     <Navbar bg="dark" variant="dark" expand="md" className="navbar__container">
       <Navbar.Brand href="/">
@@ -41,14 +49,14 @@ export default function Header() {
             <NavDropdown.Item href="/">Docname3</NavDropdown.Item>
           </NavDropdown>
         </Nav>
-        <DocNameEditor />
+        <DocNameEditor currentDoc={currentDoc} updateDoc={updateDoc} />
         <Nav className="ml-auto">
           <Nav.Link href="/">
             <FaFileAlt />
           </Nav.Link>
-          <Nav.Link href="/">
+          <Button  variant="secondary" onClick={ () => loginModal() } >
             <FaUserAstronaut />
-          </Nav.Link>
+          </Button>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
