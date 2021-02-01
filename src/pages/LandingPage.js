@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, ButtonGroup, Card, CardDeck, Navbar } from 'react-bootstrap';
 import WalkingBook from '../images/walking-book.jpeg';
+import './scss/LandingPage.css';
 
 function LandingPage() {
   return (
