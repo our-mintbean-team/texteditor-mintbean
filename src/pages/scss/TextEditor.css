@@ -1,3 +1,11 @@
+/*
+@mixin centered__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+*/
 .navbar {
   min-width: 100%;
 }
@@ -79,5 +87,18 @@
           align-items: center;
   color: #fff;
   background-color: #495057;
+}
+
+#toolbar .dropdown-item {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+}
+
+#toolbar .dropdown-menu {
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
 }
 /*# sourceMappingURL=TextEditor.css.map */

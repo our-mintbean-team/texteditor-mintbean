@@ -1,3 +1,42 @@
+@mixin centered__row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .about {
   padding: auto;
+}
+
+.about__container {
+  background: #141e30; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #243b55,
+    #141e30
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #243b55,
+    #141e30
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  min-height: 115vh;
+  width: 100%;
+}
+
+.image__col {
+  @include centered__row;
+}
+
+.bio__col {
+  @include centered__row;
+}
+
+.swal-footer {
+  text-align: center;
+}
+
+p {
+  padding: 2.5em;
 }
