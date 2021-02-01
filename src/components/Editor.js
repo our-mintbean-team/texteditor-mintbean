@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ContentEditable from "react-contenteditable";
 
 function EditorDivFunctional ({ currentDoc:{ id, title, text }, updateDoc, updateSelection }) {

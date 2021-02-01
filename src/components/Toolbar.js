@@ -1,9 +1,8 @@
 import React from "react";
-import { ButtonGroup, Button, DropdownButton, Dropdown } from "react-bootstrap";
+import { ButtonGroup, Button, Dropdown } from "react-bootstrap";
 import {
   FaFont,
   FaPalette,
-  FaHighlighter,
   FaAlignLeft,
   FaAlignRight,
   FaAlignCenter,
@@ -28,7 +27,6 @@ export default function Toolbar() {
       <Button id='bold' variant="secondary">B</Button>
       <Button id='italics' variant="secondary">I</Button>
       <Button id='underline' variant="secondary">U</Button>
-      {/* <Button variant="secondary">12</Button> */}
 
       <Dropdown as={ButtonGroup}>
         <Button 
@@ -57,9 +55,6 @@ export default function Toolbar() {
       <Button  id='change-color' variant="secondary">
         <FaPalette />
       </Button>
-      {/* <Button variant="secondary">
-        <FaHighlighter />
-      </Button> */}
       <Button id='add-hyperlink' variant="secondary">
         <FaLink />
       </Button>

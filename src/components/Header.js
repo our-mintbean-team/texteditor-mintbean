@@ -32,11 +32,6 @@ function DocNameEditor ({ currentDoc:{ id, title, text }, updateDoc }) {
 };
 
 export default function Header({ currentDoc, updateDoc, user }) {
-  const { id, 
-    title, 
-    text, 
-    lastSave
-  } = currentDoc;
 
   return (
     <Navbar bg="dark" variant="dark" expand="md" className="navbar__container">
