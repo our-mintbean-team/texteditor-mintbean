@@ -20,6 +20,8 @@ export default function Toolbar() {
     //output: the text, now with the html added at the specified indexes
   }
 
+  
+
   return (
     <ButtonGroup vertical id="toolbar">
       <Button id='change-font' variant="secondary">

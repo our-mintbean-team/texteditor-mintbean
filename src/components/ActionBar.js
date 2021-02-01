@@ -10,23 +10,6 @@ import {
   FaClone,
 } from "react-icons/fa";
 
-function DocNameEditor ({ currentDoc:{ id, title, text }, updateDoc }) {
-  return (
-    <ContentEditable
-      id='theTitle'
-      className="title__editor"
-      html={title} // innerHTML of the editable div
-      disabled={false} // use true to disable edition
-      onChange={(e) => updateDoc({ 
-        id, 
-        title: e.target.value, 
-        text,
-        lastSave: Date.now() 
-      })} // handle innerHTML change
-    />
-  );
-};
-
 export default function ActionBar({ documents, currentDoc, updateDoc }) {
   return (
     <Nav id="actionbar">
@@ -44,8 +27,6 @@ export default function ActionBar({ documents, currentDoc, updateDoc }) {
           {( documents.length>0 ) && documents.map(id => <Dropdown.Item key={id}>{id}</Dropdown.Item>)}
         </Dropdown.Menu>
       </Dropdown>
-
-      <DocNameEditor currentDoc={currentDoc} updateDoc={updateDoc} />
       <Nav.Item>
         <Button variant="secondary">
           <FaShareAlt />

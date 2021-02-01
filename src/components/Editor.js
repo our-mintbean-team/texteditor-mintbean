@@ -1,7 +1,24 @@
 import React from "react";
 import ContentEditable from "react-contenteditable";
 
-function EditorDivFunctional ({ currentDoc:{ id, title, text }, updateDoc, updateSelection }) {
+function DocNameEditor ({ currentDoc:{ id, title, text }, updateDoc }) {
+  return (
+    <ContentEditable
+      id='theTitle'
+      className="title__editor"
+      html={title} // innerHTML of the editable div
+      disabled={false} // use true to disable edition
+      onChange={(e) => updateDoc({ 
+        id, 
+        title: e.target.value, 
+        text,
+        lastSave: Date.now() 
+      })} // handle innerHTML change
+    />
+  );
+};
+
+function EditorDivFunctional ({ currentDoc:{ id, title, text }, updateDoc }) {
   return (
     <ContentEditable
       id='theText'
@@ -14,16 +31,16 @@ function EditorDivFunctional ({ currentDoc:{ id, title, text }, updateDoc, updat
         text: e.target.value, 
         lastSave: Date.now() 
       })} // handle innerHTML change
-      // onMouseUp={ () => { updateSelection( window.getSelection() ) } } 
     />
   );
 };
 
-export default function Editor({ currentDoc, updateDoc, updateSelection }) {
+export default function Editor({ currentDoc, updateDoc }) {
 
   return (
     <div id="text-editor" >
-      <EditorDivFunctional currentDoc={currentDoc} updateDoc={updateDoc} updateSelection={updateSelection} />
+      <DocNameEditor currentDoc={currentDoc} updateDoc={updateDoc} />
+      <EditorDivFunctional currentDoc={currentDoc} updateDoc={updateDoc} />
     </div>
   );
 }
