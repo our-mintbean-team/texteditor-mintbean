@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../components/Header';
 import { Button, ButtonGroup, Card, CardDeck, Navbar } from 'react-bootstrap';
 import Dez from '../images/Pringle_Desmond.jpg';
 import Dan from '../images/dan-headshot.jpg';
@@ -11,9 +12,10 @@ import './scss/LandingPage.css';
 function LandingPage() {
   return (
     <div>
-      <Navbar bg='dark' variant='dark'>
+      <Header />
+      {/* <Navbar bg='dark' variant='dark'>
         <Navbar.Brand>Editor Name</Navbar.Brand>
-      </Navbar>
+      </Navbar> */}
 
       <div className='row m-3'>
         <div className='col-md-5'>
@@ -64,7 +66,7 @@ function LandingPage() {
           </p>
         </div>
         <div className='col-md-5 d-flex'>
-          <CardDeck className='w-75 text-center'>
+          <CardDeck className='w-100 text-center'>
             <Card className='p-3'>
               <Card.Img
                 variant='top'
