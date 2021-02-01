@@ -6,6 +6,7 @@ import AboutNavbar from "../components/AboutNavbar";
 
 import zay from "../images/zay-headshot.jpg";
 import dan from "../images/dan-headshot.jpg";
+import dez from "../images/dez-headshot.jpg";
 
 //import Header from "../components/Header";
 
@@ -167,7 +168,7 @@ function About() {
           className="image__col"
         >
           <a href="/" target="_blank" rel="noopener noreferrer">
-            <Image src="https://via.placeholder.com/200" rounded />
+            <Image src={dez} rounded />
           </a>
         </Col>
         <Col
@@ -181,8 +182,10 @@ function About() {
               <h5 className="text-white text-center">Dez Pringle</h5>
             </a>
             <p className="text-white text-center">
-              Lorem ipsum dolor sit amet, consectetur adip - | awaiting bio
-              write up from Dez
+              Full-stack developer who loves to experiment and push the envelope
+              when creating new ideas. My strong background in tech support is
+              my foundation for being a problem solver. Fast learner who enjoys
+              being on a team where I can gain knowledge.
             </p>
           </div>
           <div>
@@ -195,7 +198,7 @@ function About() {
             </a>
 
             <a
-              href="https://twitter.com/"
+              href="https://twitter.com/dez1914"
               target="_blank"
               rel="noopener noreferrer"
             >
