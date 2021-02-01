@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, ButtonGroup, Card, CardDeck, Navbar } from 'react-bootstrap';
 import Dez from '../images/Pringle_Desmond.jpg';
 import Dan from '../images/dan-headshot.jpg';
+import Zay from '../images/zay-headshot.jpg';
 import WalkingBook from '../images/walking-book.jpeg';
 import { FaLinkedin } from 'react-icons/fa';
 import { IoMdConstruct } from 'react-icons/io';
@@ -67,7 +68,7 @@ function LandingPage() {
             <Card className='p-3'>
               <Card.Img
                 variant='top'
-                src={Dan}
+                src={Zay}
                 className='h-50 rounded-circle'
               />
               <Card.Body>
