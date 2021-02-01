@@ -1,18 +1,15 @@
 import React from "react";
-import { ButtonGroup, Button, DropdownButton, Dropdown } from "react-bootstrap";
+import { ButtonGroup, Button, Dropdown } from "react-bootstrap";
 import {
   FaFont,
   FaPalette,
-  FaHighlighter,
   FaAlignLeft,
   FaAlignRight,
   FaAlignCenter,
   FaAlignJustify,
-  FaLink
+  FaLink,
 } from "react-icons/fa";
-import {
-  AiOutlineFontSize
-} from 'react-icons/ai';
+import { AiOutlineFontSize } from "react-icons/ai";
 export default function Toolbar() {
   return (
     <ButtonGroup vertical id="toolbar">
@@ -28,10 +25,7 @@ export default function Toolbar() {
       {/* <Button variant="secondary">12</Button> */}
 
       <Dropdown as={ButtonGroup}>
-        <Button 
-          variant="secondary"
-          id="bg-nested-dropdown"
-          >
+        <Button variant="secondary" id="bg-nested-dropdown">
           <FaAlignLeft />
         </Button>
         <Dropdown.Toggle split variant="secondary" id="dropdown-split-basic" />
