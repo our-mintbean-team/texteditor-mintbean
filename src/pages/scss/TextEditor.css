@@ -47,6 +47,19 @@
   z-index: 999;
 }
 
+#toolbar .dropdown-item {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+}
+
+#toolbar .dropdown-menu {
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+
 .main__editor {
   min-height: 250px;
   width: 100%;

@@ -30,6 +30,13 @@
   top: 165px;
   left: 0px;
   z-index: 999;
+  .dropdown-item {
+    width:fit-content;
+    margin:0;
+  }
+  .dropdown-menu {
+    min-width:fit-content
+  }
 }
 
 .main__editor {
