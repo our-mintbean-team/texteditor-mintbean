@@ -7,12 +7,10 @@ import {
   FaAlignRight,
   FaAlignCenter,
   FaAlignJustify,
-  FaLink
+  FaLink,
 } from "react-icons/fa";
-import {
-  AiOutlineFontSize
-} from 'react-icons/ai';
 
+import { AiOutlineFontSize } from "react-icons/ai";
 
 export default function Toolbar() {
 
@@ -35,10 +33,7 @@ export default function Toolbar() {
       <Button id='underline' variant="secondary">U</Button>
 
       <Dropdown as={ButtonGroup}>
-        <Button 
-          variant="secondary"
-          id="bg-nested-dropdown"
-          >
+        <Button variant="secondary" id="bg-nested-dropdown">
           <FaAlignLeft />
         </Button>
         <Dropdown.Toggle split variant="secondary" id="dropdown-split-basic" />

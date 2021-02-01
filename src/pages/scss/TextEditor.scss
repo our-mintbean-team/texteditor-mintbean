@@ -1,3 +1,12 @@
+/*
+@mixin centered__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+*/
+
 .navbar {
   min-width: 100%;
 }
@@ -51,4 +60,14 @@
   align-items: center;
   color: #fff;
   background-color: #495057;
+}
+
+#toolbar {
+  .dropdown-item {
+    width: fit-content;
+    margin: 0;
+  }
+  .dropdown-menu {
+    min-width: fit-content;
+  }
 }
