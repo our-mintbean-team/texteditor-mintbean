@@ -29,17 +29,30 @@ function TextEditor() {
     text:'Insert Text Here',  // String
     lastSave:Date.now() // Date
   });
-  const [selectionObject, updateSelection] = useState('');
+  const [selectionObject, updateSelection] = useState({
+    string:'',
+    startIndex:0,
+    endIndex:0
+  });
 
-
-  // var mousedownTarget;
-  // function getTheSelection(e) {
-  //   const editor = document.querySelector('.main__editor');
-  //   if (selectionObject.anchorNode===editor) {
-  //     // if (mousedownTarget===editor) {
-  //     updateSelection( window.getSelection() ) 
-  //   }
-  // } 
+  function deconstructSelection(selection) {
+    if (selection.anchorNode.parentElement===document.querySelector('.main__editor')) {
+      var a = selection.anchorOffset;
+      var b = selection.focusOffset;
+      (a>b) && (b = [a, a = b][0]);
+      updateSelection({
+        string:selection.toString(),
+        startIndex:a,
+        endIndex:b
+      })
+    } else {
+      updateSelection({
+        string:'',
+        startIndex:0,
+        endIndex:0
+      })
+    }
+  }
 
 
   return (
@@ -48,8 +61,7 @@ function TextEditor() {
       <Container 
         fluid={true} 
         className="main" 
-        // onMouseDown={(e) => {mousedownTarget=e; console.log(e); console.log(mousedownTarget.target===document.querySelector('.main__editor') )}} 
-        onMouseUp={() => updateSelection( window.getSelection() ) } 
+        onMouseUp={() => { console.log(window.getSelection()); deconstructSelection( window.getSelection() )}} 
       >
         <Row>
           <Header 
@@ -91,7 +103,7 @@ function TextEditor() {
           <p><strong>Title</strong>: {currentDoc.title} - 
           <strong>Text</strong>: {currentDoc.text} - 
           <strong>Last Save</strong>:{currentDoc.lastSave} - 
-          <strong>Selection</strong>: <i>String:</i> {selectionObject.toString()}, <i>index1</i> {selectionObject.anchorOffset}, <i>index2</i> {selectionObject.focusOffset}
+          <strong>Selection</strong>: <i>String:</i> {selectionObject.string}, <i>index1</i> {selectionObject.startIndex}, <i>index2</i> {selectionObject.endIndex}
           </p>
           <Game />
         </Row>
