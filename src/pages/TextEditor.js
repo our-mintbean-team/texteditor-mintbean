@@ -65,8 +65,6 @@ function TextEditor() {
       >
         <Row>
           <Header 
-            currentDoc={currentDoc} 
-            updateDoc={updateDoc} 
             user={user} 
             updateUser={updateUser} 
           />
@@ -74,7 +72,11 @@ function TextEditor() {
 
         <Row>
           <Col>
-            <ActionBar />
+            <ActionBar 
+              documents={user.documents} 
+              currentDoc={currentDoc} 
+              updateDoc={updateDoc} 
+            />
           </Col>
         </Row>
 
