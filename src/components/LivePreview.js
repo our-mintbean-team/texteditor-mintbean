@@ -6,13 +6,13 @@ function LivePreview({ text }) {
   });
 
   return (
-    <>
-      <h3>Rich text</h3>
+    <div id='liveView' >
+      <h3 className='label' >Rich text</h3>
       <div className="text-view"></div>
       <br></br>
-      <h3>Markup</h3>
+      <h3 className='label' >Markup</h3>
       {text}
-    </>
+    </div>
   );
 }
 

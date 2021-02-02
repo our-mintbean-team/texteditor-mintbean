@@ -98,7 +98,7 @@ export default function Toolbar({
             U
           </Button>
 
-          <Button id="add-hyperlink" variant="secondary">
+          <Button id="add-hyperlink" variant="secondary" onClick={() => promptHref()}>
             <FaLink />
           </Button>
 
