@@ -9,75 +9,141 @@ import {
   FaAlignJustify,
   FaLink,
 } from "react-icons/fa";
-import { AiOutlineFontSize, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import {
+  AiOutlineFontSize,
+  AiOutlineEye,
+  AiOutlineEyeInvisible,
+} from "react-icons/ai";
 
-export default function Toolbar({ currentDoc, updateDoc, selectionObject:{ startIndex, endIndex} }) {
+export default function Toolbar({
+  currentDoc,
+  updateDoc,
+  selectionObject: { startIndex, endIndex },
+}) {
   const [visible, toggleVisible] = useState(true);
 
-  function styleSelection (tagName) {
+  function styleSelection(tagName) {
     var text = currentDoc.text;
-    var tag='<'+tagName+'>';
-    var endTag='</'+tagName+'>';
-    var text = [text.slice(0, endIndex), endTag, text.slice(endIndex)].join('');
-    text = [text.slice(0, startIndex), tag, text.slice(startIndex)].join('');
-    updateDoc({ ...currentDoc, text:text }) // output: the text, now with the html added at the specified indexes
+    var tag = "<" + tagName + ">";
+    var endTag = "</" + tagName + ">";
+    var text = [text.slice(0, endIndex), endTag, text.slice(endIndex)].join("");
+    text = [text.slice(0, startIndex), tag, text.slice(startIndex)].join("");
+    updateDoc({ ...currentDoc, text: text }); // output: the text, now with the html added at the specified indexes
   }
 
   return (
-    <ButtonGroup vertical id="toolbar" variant='secondary' >
-      <Button id='toggle-toolbar' variant="secondary" onClick={ () => {toggleVisible(!visible); if (visible) {document.querySelector('#toggleable-toolbar').style.display='none'} } } >
-        Toolbar<br/>
-        {visible ? 
-        <AiOutlineEyeInvisible />
-        :
-        <AiOutlineEye />
-        }
+    <ButtonGroup vertical id="toolbar" variant="secondary">
+      <Button
+        id="toggle-toolbar"
+        variant="secondary"
+        onClick={() => {
+          toggleVisible(!visible);
+          if (visible) {
+            document.querySelector("#toggleable-toolbar").style.display =
+              "none";
+          }
+        }}
+      >
+        Toolbar
+        <br />
+        {visible ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
       </Button>
-        {visible ? 
-        <div id='toggleable-toolbar' >
-          <Button id='change-font' variant="secondary">
+      {visible ? (
+        <div id="toggleable-toolbar">
+          <Button id="change-font" variant="secondary">
             <FaFont />
           </Button>
-          <Button id='change-font-size' variant="secondary">
+          <Button id="change-font-size" variant="secondary">
             <AiOutlineFontSize />
           </Button>
-          <Button id='bold' variant="secondary" onClick={() => styleSelection ('strong')} >B</Button>
-          <Button id='italics' variant="secondary" onClick={() => styleSelection ('em')}>I</Button>
-          <Button id='underline' variant="secondary" onClick={() => styleSelection ('u')}>U</Button>
+          <Button
+            id="bold"
+            variant="secondary"
+            onClick={() => styleSelection("strong")}
+          >
+            B
+          </Button>
+          <Button
+            id="italics"
+            variant="secondary"
+            onClick={() => styleSelection("em")}
+          >
+            I
+          </Button>
+          <Button
+            id="underline"
+            variant="secondary"
+            onClick={() => styleSelection("u")}
+          >
+            U
+          </Button>
 
-          <Dropdown as={ButtonGroup} >
+          <Dropdown as={ButtonGroup}>
             <Button variant="secondary" id="bg-nested-dropdown">
               <FaAlignLeft />
             </Button>
-            <Dropdown.Toggle split variant="secondary" id="dropdown-split-basic" />
+            <Dropdown.Toggle
+              split
+              variant="secondary"
+              id="dropdown-split-basic"
+            />
             <Dropdown.Menu>
-              <Dropdown.Item id='align-left' eventKey="1">
+              <Dropdown.Item
+                id="align-left"
+                eventKey="1"
+                onClick={(text) => {
+                  document.getElementById("theText").style.textAlign = "left";
+                  document.getElementById("liveView").style.textAlign = "left";
+                }}
+              >
                 <FaAlignLeft />
               </Dropdown.Item>
-              <Dropdown.Item id='align-center' eventKey="2">
+              <Dropdown.Item
+                id="align-center"
+                eventKey="2"
+                onClick={() => {
+                  document.getElementById("theText").style.textAlign = "center";
+                  document.getElementById("liveView").style.textAlign =
+                    "center";
+                }}
+              >
                 <FaAlignCenter />
               </Dropdown.Item>
-              <Dropdown.Item id='align-right' eventKey="3">
+              <Dropdown.Item
+                id="align-right"
+                eventKey="3"
+                onClick={() => {
+                  document.getElementById("theText").style.textAlign = "right";
+                  document.getElementById("liveView").style.textAlign = "right";
+                }}
+              >
                 <FaAlignRight />
               </Dropdown.Item>
-              <Dropdown.Item id='justify' eventKey="4">
+              <Dropdown.Item
+                id="justify"
+                eventKey="4"
+                onClick={() => {
+                  document.getElementById("theText").style.textAlign =
+                    "justify";
+                  document.getElementById("liveView").style.textAlign =
+                    "justify";
+                }}
+              >
                 <FaAlignJustify />
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 
-          <Button  id='change-color' variant="secondary">
+          <Button id="change-color" variant="secondary">
             <FaPalette />
           </Button>
-          <Button id='add-hyperlink' variant="secondary">
+          <Button id="add-hyperlink" variant="secondary">
             <FaLink />
           </Button>
         </div>
-          :
-        ' '
-        }
-      
-      
+      ) : (
+        " "
+      )}
     </ButtonGroup>
   );
 }
