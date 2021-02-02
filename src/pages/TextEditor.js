@@ -35,8 +35,15 @@ function TextEditor() {
     endIndex:0
   });
 
+
   function deconstructSelection(selection) {
-    if (selection.anchorNode.parentElement===document.querySelector('.main__editor')) {
+    if (selection.anchorNode.parentElement===null) {
+      updateSelection({
+        string:null,
+        startIndex:null,
+        endIndex:null
+      })
+    } else if (selection.anchorNode.parentElement===document.querySelector('.main__editor')) {
       var a = selection.anchorOffset;
       var b = selection.focusOffset;
       (a>b) && (b = [a, a = b][0]);
@@ -85,13 +92,16 @@ function TextEditor() {
         <br />
 
         <Row>
-          <Toolbar />
+          <Toolbar 
+            currentDoc={currentDoc} 
+            updateDoc={updateDoc} 
+            selectionObject={selectionObject}
+          />
           <Col sm={12} md={6}>
             <Editor 
               currentDoc={currentDoc} 
               updateDoc={updateDoc} 
-              // selectedText={selectionObject.toString()} 
-              updateSelection={updateSelection} 
+              selectionObject={selectionObject}
             />
           </Col>
           <Col sm={12} md={6}>

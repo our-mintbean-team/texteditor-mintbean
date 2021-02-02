@@ -9,18 +9,18 @@ import {
   FaAlignJustify,
   FaLink,
 } from "react-icons/fa";
-
 import { AiOutlineFontSize } from "react-icons/ai";
 
-export default function Toolbar() {
-
-  function styleString () {
-    // input: text; selection or indexes; html to add
-      
-    //output: the text, now with the html added at the specified indexes
-  }
-
+export default function Toolbar({ currentDoc, updateDoc, selectionObject:{ startIndex, endIndex} }) {
   
+  function styleSelection (tagName) {
+    var text = currentDoc.text;
+    var tag='<'+tagName+'>';
+    var endTag='</'+tagName+'>';
+    var text = [text.slice(0, endIndex), endTag, text.slice(endIndex)].join('');
+    text = [text.slice(0, startIndex), tag, text.slice(startIndex)].join('');
+    updateDoc({ ...currentDoc, text:text }) // output: the text, now with the html added at the specified indexes
+  }
 
   return (
     <ButtonGroup vertical id="toolbar">
@@ -30,9 +30,9 @@ export default function Toolbar() {
       <Button id='change-font-size' variant="secondary">
         <AiOutlineFontSize />
       </Button>
-      <Button id='bold' variant="secondary">B</Button>
-      <Button id='italics' variant="secondary">I</Button>
-      <Button id='underline' variant="secondary">U</Button>
+      <Button id='bold' variant="secondary" onClick={() => styleSelection ('strong')} >B</Button>
+      <Button id='italics' variant="secondary" onClick={() => styleSelection ('i')}>I</Button>
+      <Button id='underline' variant="secondary" onClick={() => styleSelection ('u')}>U</Button>
 
       <Dropdown as={ButtonGroup}>
         <Button variant="secondary" id="bg-nested-dropdown">
