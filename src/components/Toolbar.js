@@ -35,9 +35,6 @@ export default function Toolbar({ currentDoc, updateDoc, selectionObject:{ start
       </Button>
         {visible ? 
         <div id='toggleable-toolbar' >
-          <Button id='hide-toolbar' variant="secondary">
-            <FaFont />
-          </Button>
           <Button id='change-font' variant="secondary">
             <FaFont />
           </Button>

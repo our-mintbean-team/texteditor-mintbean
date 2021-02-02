@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-import Header from "../components/Header";
+import UniversalNavbar from "../components/UniversalNavbar";
 import ActionBar from "../components/ActionBar";
 import Toolbar from "../components/Toolbar";
 import Editor from "../components/Editor";
@@ -13,7 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 function TextEditor() {
-
+// State
   const [user, updateUser] = useState({
     id:1,
     name:'Todd',
@@ -36,6 +36,7 @@ function TextEditor() {
   });
 
 
+// Selecting text in the editor
   function deconstructSelection(selection) {
     if (selection.anchorNode.parentElement===null) {
       updateSelection({
@@ -43,7 +44,7 @@ function TextEditor() {
         startIndex:null,
         endIndex:null
       })
-    } else if (selection.anchorNode===document.querySelector('.main__editor')) {
+    } else if (selection.anchorNode===document.querySelector('#editor')) {
       var a = selection.anchorOffset;
       var b = selection.focusOffset;
       (a>b) && (b = [a, a = b][0]);
@@ -61,9 +62,8 @@ function TextEditor() {
     }
   }
 
-
+// the component itself
   return (
-
     <div>
       <Container 
         fluid={true} 
@@ -71,7 +71,7 @@ function TextEditor() {
         onMouseUp={() => { console.log(window.getSelection()); deconstructSelection( window.getSelection() )}} 
       >
         <Row>
-          <Header 
+          <UniversalNavbar 
             user={user} 
             updateUser={updateUser} 
           />
