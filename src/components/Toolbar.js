@@ -50,12 +50,6 @@ export default function Toolbar({
       </Button>
       {visible ? (
         <div id="toggleable-toolbar">
-          <Button id="change-font" variant="secondary">
-            <FaFont />
-          </Button>
-          <Button id="change-font-size" variant="secondary">
-            <AiOutlineFontSize />
-          </Button>
           <Button
             id="bold"
             variant="secondary"
@@ -78,9 +72,103 @@ export default function Toolbar({
             U
           </Button>
 
+          <Button id="add-hyperlink" variant="secondary">
+            <FaLink />
+          </Button>
+
+          <Dropdown as={ButtonGroup}>
+            <Button id="change-font-size" variant="secondary">
+              <AiOutlineFontSize />
+            </Button>
+            <Dropdown.Toggle
+              split
+              variant="secondary"
+              id="dropdown-split-basic"
+            />
+            <Dropdown.Menu>
+              <Dropdown.Item
+                id="font-small"
+                eventKey="1"
+                onClick={(text) => {
+                  document.getElementById("theText").style.fontSize = "small";
+                  document.getElementById("liveView").style.fontSize = "small";
+                }}
+              >
+                Small
+              </Dropdown.Item>
+              <Dropdown.Item
+                id="font-medium"
+                eventKey="2"
+                onClick={() => {
+                  document.getElementById("theText").style.fontSize = "medium";
+                  document.getElementById("liveView").style.fontSize = "medium";
+                }}
+              >
+                Medium
+              </Dropdown.Item>
+              <Dropdown.Item
+                id="font-large"
+                eventKey="3"
+                onClick={() => {
+                  document.getElementById("theText").style.fontSize = "large";
+                  document.getElementById("liveView").style.fontSize = "large";
+                }}
+              >
+                Large
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <Dropdown as={ButtonGroup}>
+            <Button id="change-font" variant="secondary">
+              <FaFont />
+            </Button>
+            <Dropdown.Toggle
+              split
+              variant="secondary"
+              id="dropdown-split-basic"
+            />
+            <Dropdown.Menu>
+              <Dropdown.Item
+                id="font-verdana"
+                eventKey="1"
+                onClick={(text) => {
+                  document.getElementById("theText").style.fontFamily = "Verdana";
+                  document.getElementById("liveView").style.fontFamily =
+                    "Verdana";
+                }}
+              >
+                Verdana
+              </Dropdown.Item>
+              <Dropdown.Item
+                id="font-helvetica"
+                eventKey="2"
+                onClick={() => {
+                  document.getElementById("theText").style.fontFamily =
+                    "Helvetica";
+                  document.getElementById("liveView").style.fontFamily =
+                    "Helvetica";
+                }}
+              >
+                Helvetica
+              </Dropdown.Item>
+              <Dropdown.Item
+                id="font-times"
+                eventKey="3"
+                onClick={() => {
+                  document.getElementById("theText").style.fontFamily = "Times";
+                  document.getElementById("liveView").style.fontFamily =
+                    "Times";
+                }}
+              >
+                Times New Roman
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
           <Dropdown as={ButtonGroup}>
             <Button variant="secondary" id="bg-nested-dropdown">
-              <FaAlignLeft />
+              <FaAlignJustify />
             </Button>
             <Dropdown.Toggle
               split
@@ -134,12 +222,58 @@ export default function Toolbar({
             </Dropdown.Menu>
           </Dropdown>
 
-          <Button id="change-color" variant="secondary">
-            <FaPalette />
-          </Button>
-          <Button id="add-hyperlink" variant="secondary">
-            <FaLink />
-          </Button>
+          <Dropdown as={ButtonGroup}>
+            <Button id="change-color" variant="secondary">
+              <FaPalette />
+            </Button>
+            <Dropdown.Toggle
+              split
+              variant="secondary"
+              id="dropdown-split-basic"
+            />
+            <Dropdown.Menu>
+              <Dropdown.Item
+                id="red"
+                eventKey="1"
+                onClick={(text) => {
+                  document.getElementById("theText").style.color = "red";
+                  document.getElementById("liveView").style.color = "red";
+                }}
+              >
+                Red
+              </Dropdown.Item>
+              <Dropdown.Item
+                id="green"
+                eventKey="2"
+                onClick={() => {
+                  document.getElementById("theText").style.color = "green";
+                  document.getElementById("liveView").style.color = "green";
+                }}
+              >
+                Green
+              </Dropdown.Item>
+              <Dropdown.Item
+                id="blue"
+                eventKey="3"
+                onClick={() => {
+                  document.getElementById("theText").style.color = "blue";
+                  document.getElementById("liveView").style.color = "blue";
+                }}
+              >
+                Blue
+              </Dropdown.Item>
+              <Dropdown.Item
+                id="white"
+                eventKey="4"
+                onClick={() => {
+                  document.getElementById("theText").style.color = "white";
+                  document.getElementById("liveView").style.color = "white";
+                }}
+              >
+                White
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
       ) : (
         " "
