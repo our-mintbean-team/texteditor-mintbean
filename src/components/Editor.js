@@ -36,11 +36,28 @@ function EditorDivFunctional ({ currentDoc:{ id, title, text }, updateDoc }) {
 };
 
 export default function Editor({ currentDoc, updateDoc }) {
-
+  const { id, title, text } = currentDoc;
   return (
-    <div id="text-editor" >
-      <DocNameEditor currentDoc={currentDoc} updateDoc={updateDoc} />
-      <EditorDivFunctional currentDoc={currentDoc} updateDoc={updateDoc} />
-    </div>
+    <>
+      <div>
+        <DocNameEditor currentDoc={currentDoc} updateDoc={updateDoc} />
+      </div>
+      <div id="text-editor" >
+        <textarea
+          id='theText' 
+          className='main__editor' 
+          onChange={(e) => updateDoc({ 
+            id, 
+            title, 
+            text: e.target.value, 
+            lastSave: Date.now() 
+          })} // handle innerHTML change
+          // contentEditable
+        >
+          {text}
+        </textarea>
+        {/* <EditorDivFunctional currentDoc={currentDoc} updateDoc={updateDoc} /> */}
+      </div>
+    </>
   );
 }

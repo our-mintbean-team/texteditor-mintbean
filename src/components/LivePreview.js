@@ -6,7 +6,7 @@ function LivePreview({ text }) {
   console.log(text)
   return (
     <div className="text-view">
-      <p>{text}</p>
+      {text}
     </div>
   );
 }

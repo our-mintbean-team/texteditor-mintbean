@@ -43,7 +43,7 @@ function TextEditor() {
         startIndex:null,
         endIndex:null
       })
-    } else if (selection.anchorNode.parentElement===document.querySelector('.main__editor')) {
+    } else if (selection.anchorNode===document.querySelector('.main__editor')) {
       var a = selection.anchorOffset;
       var b = selection.focusOffset;
       (a>b) && (b = [a, a = b][0]);
@@ -89,9 +89,7 @@ function TextEditor() {
 
         <br />
 
-        <br />
-
-        <Row>
+        <Row id='editor-row'>
           <Toolbar 
             currentDoc={currentDoc} 
             updateDoc={updateDoc} 
