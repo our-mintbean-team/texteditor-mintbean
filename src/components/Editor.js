@@ -52,6 +52,7 @@ export default function Editor({ currentDoc, updateDoc }) {
             text: e.target.value, 
             lastSave: Date.now() 
           })} // handle innerHTML change
+          spellCheck={true}
           // contentEditable
         >
           {text}

@@ -10,15 +10,41 @@ import {
   FaLink,
 } from "react-icons/fa";
 import { AiOutlineFontSize, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import swal from 'sweetalert';
+
 
 export default function Toolbar({ currentDoc, updateDoc, selectionObject:{ startIndex, endIndex} }) {
   const [visible, toggleVisible] = useState(true);
 
-  function styleSelection (tagName) {
+  function promptHref() {
+    var link;
+    swal({
+      text: 'Enter url to link.',
+      content: {
+        element: "input",
+        attributes: {
+          value: "http://"
+        }
+      },
+      button: {
+        text: "Link",
+        closeModal: true
+      }
+    })
+    .then((link) => {
+      styleSelection('a',link)
+    })
+  }
+
+  function styleSelection (tagName, link) {
     var text = currentDoc.text;
-    var tag='<'+tagName+'>';
+    if (tagName==='a') {
+      var tag='<'+tagName+' href="'+ link +'" target="_blank" >';  // get link by input from a modal
+    } else {
+      var tag='<'+tagName+'>';
+    }
     var endTag='</'+tagName+'>';
-    var text = [text.slice(0, endIndex), endTag, text.slice(endIndex)].join('');
+    text = [text.slice(0, endIndex), endTag, text.slice(endIndex)].join('');
     text = [text.slice(0, startIndex), tag, text.slice(startIndex)].join('');
     updateDoc({ ...currentDoc, text:text }) // output: the text, now with the html added at the specified indexes
   }
@@ -69,15 +95,14 @@ export default function Toolbar({ currentDoc, updateDoc, selectionObject:{ start
           <Button  id='change-color' variant="secondary">
             <FaPalette />
           </Button>
-          <Button id='add-hyperlink' variant="secondary">
+          <Button id='add-hyperlink' variant="secondary" onClick={() => promptHref()} >
             <FaLink />
           </Button>
         </div>
           :
         ' '
         }
-      
-      
+
     </ButtonGroup>
   );
 }

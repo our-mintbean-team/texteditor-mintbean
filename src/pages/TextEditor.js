@@ -38,20 +38,20 @@ function TextEditor() {
 
 // Selecting text in the editor
   function deconstructSelection(selection) {
-    if (selection.anchorNode.parentElement===null) {
+    const editor = document.querySelector('textarea');
+    if (selection.anchorNode===null) {
       updateSelection({
         string:null,
         startIndex:null,
         endIndex:null
       })
-    } else if (selection.anchorNode===document.querySelector('#editor')) {
-      var a = selection.anchorOffset;
-      var b = selection.focusOffset;
-      (a>b) && (b = [a, a = b][0]);
+    } else if (selection.anchorNode===document.querySelector('#toolbar')) {
+      return;  
+    } else if (selection.anchorNode===document.querySelector('#text-editor')) {
       updateSelection({
         string:selection.toString(),
-        startIndex:a,
-        endIndex:b
+        startIndex:editor.selectionStart,
+        endIndex:editor.selectionEnd
       })
     } else {
       updateSelection({
