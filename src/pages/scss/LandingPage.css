@@ -21,7 +21,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.875;
-  min-height: 65vh;
+  min-height: 56vh;
   max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -123,15 +123,13 @@ li {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: space-between;
-      -ms-flex-align: space-between;
-          align-items: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .tech__right {
+  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
