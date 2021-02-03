@@ -25,9 +25,13 @@
   }
 }
 
+#editor-row {
+  margin:0 6rem
+}
+
 #toolbar {
   position: fixed;
-  top: 165px;
+  top: 15%;
   left: 0px;
   z-index: 999;
   .dropdown-item {
@@ -37,6 +41,21 @@
   .dropdown-menu {
     min-width:fit-content
   }
+  #toggle-toolbar {
+    padding:0
+  }
+  #toggleable-toolbar {
+    display:flex;
+    flex-direction: column
+  }
+}
+
+#theTitle {
+  font-size:2rem
+}
+
+#theText {
+  color:white;
 }
 
 .main__editor {
@@ -62,12 +81,12 @@
   background-color: #495057;
 }
 
-#toolbar {
-  .dropdown-item {
-    width: fit-content;
-    margin: 0;
-  }
-  .dropdown-menu {
-    min-width: fit-content;
+#liveView {
+  margin:3rem 0 0 2rem;
+  .label {
+    font-size:1.5rem !important;
+    text-align: left !important;
+    color: white  !important;
+    font-family: Arial, Helvetica, sans-serif  !important
   }
 }

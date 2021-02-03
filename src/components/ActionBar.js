@@ -1,6 +1,8 @@
 import React from "react";
-import { Nav, Button } from "react-bootstrap";
+import { Nav, NavDropdown, Button, ButtonGroup, Dropdown } from "react-bootstrap";
+import ContentEditable from "react-contenteditable";
 import {
+  FaFileAlt,
   FaShareAlt,
   FaDesktop,
   FaPaintRoller,
@@ -8,9 +10,23 @@ import {
   FaClone,
 } from "react-icons/fa";
 
-export default function ActionBar() {
+export default function ActionBar({ documents, currentDoc, updateDoc }) {
   return (
     <Nav id="actionbar">
+      <Dropdown as={ButtonGroup}>
+
+        <Dropdown.Toggle split variant="secondary" id="dropdown-split-basic" >
+          <FaFileAlt />&nbsp;Documents&nbsp;
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item id='newDoc'> 
+            New Doc
+          </Dropdown.Item>
+          <Dropdown.Divider />
+          {( documents.length>0 ) && documents.map(id => <Dropdown.Item key={id}>{id}</Dropdown.Item>)}
+        </Dropdown.Menu>
+      </Dropdown>
       <Nav.Item>
         <Button variant="secondary">
           <FaShareAlt />

@@ -1,5 +1,4 @@
 import React from 'react';
-import ContentEditable from 'react-contenteditable';
 import { Button, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { FaTextWidth, FaFileAlt, FaUserAstronaut } from 'react-icons/fa';
 import { GrLogout } from 'react-icons/gr';
@@ -13,25 +12,6 @@ function loginModal() {
   swal('Put Register/Login here');
 }
 
-// function DocNameEditor({ currentDoc: { id, title, text }, updateDoc }) {
-//   return (
-//     <ContentEditable
-//       id='theTitle'
-//       className='title__editor'
-//       html={title} // innerHTML of the editable div
-//       disabled={false} // use true to disable edition
-//       onChange={e =>
-//         updateDoc({
-//           id,
-//           title: e.target.value,
-//           text,
-//           lastSave: Date.now()
-//         })
-//       } // handle innerHTML change
-//     />
-//   );
-// }
-
 export default function Header({ currentDoc, updateDoc, user }) {
   return (
     <Navbar bg='dark' variant='dark' expand='md' className='navbar__container'>
@@ -43,13 +23,8 @@ export default function Header({ currentDoc, updateDoc, user }) {
       <Navbar.Collapse id='basic-navbar-nav'>
         <Nav className='mr-auto'>
           <Nav.Link href='/about'>About</Nav.Link>
-          <NavDropdown title='Recent Docs' id='basic-nav-dropdown'>
-            <NavDropdown.Item href='/'>New Doc</NavDropdown.Item>
-            <NavDropdown.Divider />
-            {/* {( user.documents.length>0 ) && user.documents.map(id => <NavDropdown.Item>{id}</NavDropdown.Item>)} */}
-          </NavDropdown>
         </Nav>
-        {/* <DocNameEditor currentDoc={currentDoc} updateDoc={updateDoc} /> */}
+
         <Nav className='ml-auto'>
           <Nav.Link href='/'>
             <FaFileAlt />

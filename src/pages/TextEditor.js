@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-import Header from "../components/Header";
+import UniversalNavbar from "../components/UniversalNavbar";
 import ActionBar from "../components/ActionBar";
 import Toolbar from "../components/Toolbar";
 import Editor from "../components/Editor";
@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 function TextEditor() {
+// State
   const [user, updateUser] = useState({
     id:1,
     name:'Todd',
@@ -28,32 +29,78 @@ function TextEditor() {
     text:'Insert Text Here',  // String
     lastSave:Date.now() // Date
   });
-  const [selectedText, updateSelection] = useState('');
+  const [selectionObject, updateSelection] = useState({
+    string:'',
+    startIndex:0,
+    endIndex:0
+  });
 
+
+// Selecting text in the editor
+  function deconstructSelection(selection) {
+    const editor = document.querySelector('textarea');
+    if (selection.anchorNode===null) {
+      updateSelection({
+        string:null,
+        startIndex:null,
+        endIndex:null
+      })
+    } else if (selection.anchorNode===document.querySelector('#toolbar')) {
+      return;  
+    } else if (selection.anchorNode===document.querySelector('#text-editor')) {
+      updateSelection({
+        string:selection.toString(),
+        startIndex:editor.selectionStart,
+        endIndex:editor.selectionEnd
+      })
+    } else {
+      updateSelection({
+        string:'',
+        startIndex:0,
+        endIndex:0
+      })
+    }
+  }
+
+// the component itself
   return (
-    <div onMouseUp={() => {
-      updateSelection(window.getSelection().toString());
-      console.log(window.getSelection())
-    }}>
-      <Container fluid={true} className="main">
+    <div>
+      <Container 
+        fluid={true} 
+        className="main" 
+        onMouseUp={() => { console.log(window.getSelection()); deconstructSelection( window.getSelection() )}} 
+      >
         <Row>
-          <Header currentDoc={currentDoc} updateDoc={updateDoc} user={user} updateUser={updateUser} />
+          <UniversalNavbar 
+            user={user} 
+            updateUser={updateUser} 
+          />
         </Row>
 
         <Row>
           <Col>
-            <ActionBar />
+            <ActionBar 
+              documents={user.documents} 
+              currentDoc={currentDoc} 
+              updateDoc={updateDoc} 
+            />
           </Col>
         </Row>
 
         <br />
 
-        <br />
-
-        <Row>
-          <Toolbar />
+        <Row id='editor-row'>
+          <Toolbar 
+            currentDoc={currentDoc} 
+            updateDoc={updateDoc} 
+            selectionObject={selectionObject}
+          />
           <Col sm={12} md={6}>
-            <Editor currentDoc={currentDoc} updateDoc={updateDoc} selectedText={selectedText} updateSelection={updateSelection} />
+            <Editor 
+              currentDoc={currentDoc} 
+              updateDoc={updateDoc} 
+              selectionObject={selectionObject}
+            />
           </Col>
           <Col sm={12} md={6}>
             <LivePreview text={currentDoc.text} />
@@ -66,7 +113,7 @@ function TextEditor() {
           <p><strong>Title</strong>: {currentDoc.title} - 
           <strong>Text</strong>: {currentDoc.text} - 
           <strong>Last Save</strong>:{currentDoc.lastSave} - 
-          <strong>Selection</strong>:{selectedText.toString()} 
+          <strong>Selection</strong>: <i>String:</i> {selectionObject.string}, <i>index1</i> {selectionObject.startIndex}, <i>index2</i> {selectionObject.endIndex}
           </p>
           <Game />
         </Row>
