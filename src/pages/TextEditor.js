@@ -75,7 +75,7 @@ function TextEditor() {
     <div>
       <Container 
         fluid={true} 
-        className="main" 
+        id="main" 
         onMouseUp={() => { console.log(window.getSelection()); deconstructSelection( window.getSelection() )}} 
       >
         <Row>
