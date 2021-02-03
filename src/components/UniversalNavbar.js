@@ -3,6 +3,7 @@ import swal from "sweetalert";
 import { Navbar, Nav, Modal, Button, Form } from "react-bootstrap";
 import { FaFileAlt, FaUserAstronaut } from "react-icons/fa";
 import { GiAlienBug } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 export default function UniversalNavbar() {
   const [show, setShow] = useState(false);
@@ -12,14 +13,16 @@ export default function UniversalNavbar() {
 
   return (
     <Navbar bg="dark" variant="dark" expand="md" className="navbar__container">
-      <Navbar.Brand href="/home">
-        <GiAlienBug />
-        &nbsp; Alien vs Editor
-      </Navbar.Brand>
+      <Link to="/">
+        <Navbar.Brand>
+          <GiAlienBug />
+          &nbsp; Alien vs Editor
+        </Navbar.Brand>
+      </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/">Text Editor</Nav.Link>
+          <Nav.Link href="/editor">Text Editor</Nav.Link>
           <Nav.Link href="/about">About the Devs</Nav.Link>
         </Nav>
         <Nav className="ml-auto">

@@ -30,7 +30,7 @@ function LandingPage() {
             <h1>Alien vs Editor</h1>
             <h3>The open source editor for all</h3>
             <ButtonGroup>
-              <Link to="/">
+              <Link to="/editor">
                 <Button pill variant="secondary">
                   Get Started
                 </Button>
