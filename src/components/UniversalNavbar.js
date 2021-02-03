@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import swal from "sweetalert";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Modal, Button, Form } from "react-bootstrap";
 import { FaFileAlt, FaUserAstronaut } from "react-icons/fa";
 import { GiAlienBug } from "react-icons/gi";
 
 export default function UniversalNavbar() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <Navbar bg="dark" variant="dark" expand="md" className="navbar__container">
       <Navbar.Brand href="/home">
@@ -31,15 +36,36 @@ export default function UniversalNavbar() {
           >
             <FaFileAlt />
           </Nav.Link>
-          <Nav.Link
-            onClick={() => {
-              swal("Sign-Up / Login", {
-                buttons: ["Gmail", "Github"],
-              });
-            }}
-          >
+          <Nav.Link onClick={handleShow}>
             <FaUserAstronaut />
           </Nav.Link>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Login to Your Account</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control type="email" placeholder="Enter username" />
+                </Form.Group>
+
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control type="password" placeholder="Enter password" />
+                </Form.Group>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={handleClose}>
+                Login
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

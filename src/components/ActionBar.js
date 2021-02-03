@@ -54,7 +54,7 @@ export default function ActionBar({ documents, currentDoc, updateDoc }) {
           variant="secondary"
           onClick={() => {
             document.getElementById("main").style.backgroundImage =
-              "url('https://picsum.photos/1080/1920/')";
+              "url('https://picsum.photos/1920/1080/')";
           }}
         >
           <FaPaintRoller />
