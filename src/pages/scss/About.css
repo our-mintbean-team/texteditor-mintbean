@@ -3,11 +3,11 @@
 }
 
 .about__container {
-  background: #141e30;
+  background: #232526;
   /* fallback for old browsers */
   /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-gradient(linear, left top, right top, from(#243b55), to(#141e30));
-  background: linear-gradient(to right, #243b55, #141e30);
+  background: -webkit-gradient(linear, left top, right top, from(#414345), to(#232526));
+  background: linear-gradient(to right, #414345, #232526);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   min-height: 115vh;
   width: 100%;
