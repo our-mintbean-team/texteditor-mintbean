@@ -12,7 +12,7 @@ function DocNameEditor ({ currentDoc:{ id, title, text }, updateDoc }) {
         id, 
         title: e.target.value, 
         text,
-        lastSave: Date.now() 
+        lastSave: new Date() 
       })} // handle innerHTML change
     />
   );
@@ -29,35 +29,41 @@ function EditorDivFunctional ({ currentDoc:{ id, title, text }, updateDoc }) {
         id, 
         title, 
         text: e.target.value, 
-        lastSave: Date.now() 
+        lastSave:  new Date()
       })} // handle innerHTML change
     />
   );
 };
 
+
 export default function Editor({ currentDoc, updateDoc }) {
-  const { id, title, text } = currentDoc;
+
+  const { id, title, text, lastSave } = currentDoc;
+
+  var saveTime = lastSave.toTimeString();
+
   return (
     <>
       <div>
         <DocNameEditor currentDoc={currentDoc} updateDoc={updateDoc} />
       </div>
       <div id="text-editor" >
-        <textarea
+        {/* <textarea
           id='theText' 
           className='main__editor' 
           onChange={(e) => updateDoc({ 
             id, 
             title, 
             text: e.target.value, 
-            lastSave: Date.now() 
+            lastSave: new Date() 
           })} // handle innerHTML change
           spellCheck={true}
           // contentEditable
         >
           {text}
-        </textarea>
-        {/* <EditorDivFunctional currentDoc={currentDoc} updateDoc={updateDoc} /> */}
+        </textarea> */}
+        <EditorDivFunctional currentDoc={currentDoc} updateDoc={updateDoc} />
+        <p>Last save at {saveTime}</p>
       </div>
     </>
   );

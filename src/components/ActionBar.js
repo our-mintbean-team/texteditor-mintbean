@@ -9,6 +9,7 @@ import {
   FaCommentMedical,
   FaClone,
 } from "react-icons/fa";
+import axios from 'axios';
 
 export default function ActionBar({ documents, currentDoc, updateDoc }) {
   return (

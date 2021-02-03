@@ -7,9 +7,12 @@ import Toolbar from "../components/Toolbar";
 import Editor from "../components/Editor";
 import LivePreview from "../components/LivePreview";
 import Game from "../components/Game";
+import url from "../db.js"
+import axios from 'axios';
 
 import "./scss/TextEditor.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 
 
 function TextEditor() {
@@ -27,7 +30,7 @@ function TextEditor() {
     id:1, // ObjectId
     title:'Document Name', // String
     text:'Insert Text Here',  // String
-    lastSave:Date.now() // Date
+    lastSave: new Date() // Date
   });
   const [selectionObject, updateSelection] = useState({
     string:'',
@@ -35,10 +38,12 @@ function TextEditor() {
     endIndex:0
   });
 
+  var saveTime = currentDoc.lastSave.toTimeString();
 
 // Selecting text in the editor
   function deconstructSelection(selection) {
-    const editor = document.querySelector('textarea');
+    const editor = document.querySelector('#theText');
+    // const editor = document.querySelector('textarea');
     if (selection.anchorNode===null) {
       updateSelection({
         string:null,
@@ -47,11 +52,13 @@ function TextEditor() {
       })
     } else if (selection.anchorNode===document.querySelector('#toolbar')) {
       return;  
-    } else if (selection.anchorNode===document.querySelector('#text-editor')) {
+    } else if (selection.anchorNode.parentNode===editor) {
       updateSelection({
         string:selection.toString(),
-        startIndex:editor.selectionStart,
-        endIndex:editor.selectionEnd
+        startIndex:selection.anchorOffset,
+        endIndex:selection.focusOffset
+        // startIndex:editor.selectionStart,
+        // endIndex:editor.selectionEnd
       })
     } else {
       updateSelection({
@@ -61,6 +68,7 @@ function TextEditor() {
       })
     }
   }
+
 
 // the component itself
   return (
@@ -83,6 +91,7 @@ function TextEditor() {
               documents={user.documents} 
               currentDoc={currentDoc} 
               updateDoc={updateDoc} 
+              url={url}
             />
           </Col>
         </Row>
@@ -100,6 +109,7 @@ function TextEditor() {
               currentDoc={currentDoc} 
               updateDoc={updateDoc} 
               selectionObject={selectionObject}
+              url={url}
             />
           </Col>
           <Col sm={12} md={6}>
@@ -112,7 +122,7 @@ function TextEditor() {
         <Row>
           <p><strong>Title</strong>: {currentDoc.title} - 
           <strong>Text</strong>: {currentDoc.text} - 
-          <strong>Last Save</strong>:{currentDoc.lastSave} - 
+          <strong>Last Save</strong>:{saveTime} - 
           <strong>Selection</strong>: <i>String:</i> {selectionObject.string}, <i>index1</i> {selectionObject.startIndex}, <i>index2</i> {selectionObject.endIndex}
           </p>
           <Game />
