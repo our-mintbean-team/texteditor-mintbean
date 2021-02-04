@@ -12,9 +12,9 @@ function App() {
       <Router>
         <ScrollToTop />
         <Switch>
-          <Route path="/home" component={LandingPage} />
+          <Route path="/editor" component={TextEditor} />
           <Route path="/about" component={About} />
-          <Route path="/" component={TextEditor} />
+          <Route path="/" component={LandingPage} />
         </Switch>
       </Router>
     </div>

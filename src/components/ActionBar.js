@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Nav,
-  NavDropdown,
   Button,
   ButtonGroup,
   Dropdown,
@@ -14,7 +13,7 @@ import {
   FaPaintRoller,
   FaClone,
 } from "react-icons/fa";
-import swal from "@sweetalert/with-react";
+import swal from "sweetalert";
 
 export default function ActionBar({ documents, currentDoc, updateDoc }) {
   return (
