@@ -2,7 +2,7 @@
   "name": "texteditor-mintbean",
   "version": "0.1.0",
   "private": true,
-  "homepage":"http://our-mintbean-team.github.io/texteditor-mintbean",
+  "homepage":"http://our-mintbean-team.github.io/texteditor-mintbean/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
