@@ -16,6 +16,7 @@ import {
 } from "react-icons/ai";
 import swal from 'sweetalert';
 
+var hrefSelection;
 
 export default function Toolbar({
   currentDoc,
@@ -24,7 +25,7 @@ export default function Toolbar({
 }) {
   const [visible, toggleVisible] = useState(true);
 
-  function promptHref() {
+  function promptHref(evt) {
     var link;
     swal({
       text: 'Enter url to link.',
@@ -40,7 +41,9 @@ export default function Toolbar({
       }
     })
     .then((link) => {
-      styleSelection('a',link)
+      // styleSelection('a',link)
+      window.getSelection(hrefSelection);
+      document.execCommand("createLink", false, link); // Send the command to the browser
     })
   }
 
@@ -79,26 +82,47 @@ export default function Toolbar({
           <Button
             id="bold"
             variant="secondary"
-            onClick={() => styleSelection("strong")}
+            onMouseDown={evt => {
+              evt.preventDefault(); // Avoids loosing focus from the editable area
+              document.execCommand("bold", false); // Send the command to the browser
+            }}
+            // onClick={() => styleSelection("strong")}
           >
             B
           </Button>
           <Button
             id="italics"
             variant="secondary"
-            onClick={() => styleSelection("em")}
+            onMouseDown={evt => {
+              evt.preventDefault(); // Avoids loosing focus from the editable area
+              document.execCommand("italic", false); // Send the command to the browser
+            }}
+            // onClick={() => styleSelection("em")}
           >
             I
           </Button>
           <Button
             id="underline"
             variant="secondary"
-            onClick={() => styleSelection("u")}
+            onMouseDown={evt => {
+              evt.preventDefault(); // Avoids loosing focus from the editable area
+              document.execCommand("underline", false); // Send the command to the browser
+            }}
+            // onClick={() => styleSelection("u")}
           >
             U
           </Button>
 
-          <Button id="add-hyperlink" variant="secondary" onClick={() => promptHref()}>
+          <Button 
+            id="add-hyperlink" 
+            variant="secondary" 
+            // onClick={() => promptHref()}
+            onMouseDown={evt => {
+              evt.preventDefault(); // Avoids losing focus from the editable area
+              hrefSelection = window.getSelection();
+              promptHref(evt);
+            }}
+          >
             <FaLink />
           </Button>
 
@@ -117,7 +141,7 @@ export default function Toolbar({
                 eventKey="1"
                 onClick={(text) => {
                   document.getElementById("theText").style.fontSize = "small";
-                  document.getElementById("liveView").style.fontSize = "small";
+                  // document.getElementById("liveView").style.fontSize = "small";
                 }}
               >
                 Small
@@ -127,7 +151,7 @@ export default function Toolbar({
                 eventKey="2"
                 onClick={() => {
                   document.getElementById("theText").style.fontSize = "medium";
-                  document.getElementById("liveView").style.fontSize = "medium";
+                  // document.getElementById("liveView").style.fontSize = "medium";
                 }}
               >
                 Medium
@@ -137,7 +161,7 @@ export default function Toolbar({
                 eventKey="3"
                 onClick={() => {
                   document.getElementById("theText").style.fontSize = "large";
-                  document.getElementById("liveView").style.fontSize = "large";
+                  // document.getElementById("liveView").style.fontSize = "large";
                 }}
               >
                 Large
@@ -160,8 +184,8 @@ export default function Toolbar({
                 eventKey="1"
                 onClick={(text) => {
                   document.getElementById("theText").style.fontFamily = "Verdana";
-                  document.getElementById("liveView").style.fontFamily =
-                    "Verdana";
+                  // document.getElementById("liveView").style.fontFamily =
+                    // "Verdana";
                 }}
               >
                 Verdana
@@ -172,8 +196,8 @@ export default function Toolbar({
                 onClick={() => {
                   document.getElementById("theText").style.fontFamily =
                     "Helvetica";
-                  document.getElementById("liveView").style.fontFamily =
-                    "Helvetica";
+                  // document.getElementById("liveView").style.fontFamily =
+                    // "Helvetica";
                 }}
               >
                 Helvetica
@@ -183,8 +207,8 @@ export default function Toolbar({
                 eventKey="3"
                 onClick={() => {
                   document.getElementById("theText").style.fontFamily = "Times";
-                  document.getElementById("liveView").style.fontFamily =
-                    "Times";
+                  // document.getElementById("liveView").style.fontFamily =
+                  //   "Times";
                 }}
               >
                 Times New Roman
@@ -207,7 +231,7 @@ export default function Toolbar({
                 eventKey="1"
                 onClick={(text) => {
                   document.getElementById("theText").style.textAlign = "left";
-                  document.getElementById("liveView").style.textAlign = "left";
+                  // document.getElementById("liveView").style.textAlign = "left";
                 }}
               >
                 <FaAlignLeft />
@@ -217,8 +241,8 @@ export default function Toolbar({
                 eventKey="2"
                 onClick={() => {
                   document.getElementById("theText").style.textAlign = "center";
-                  document.getElementById("liveView").style.textAlign =
-                    "center";
+                  // document.getElementById("liveView").style.textAlign =
+                  //   "center";
                 }}
               >
                 <FaAlignCenter />
@@ -228,7 +252,7 @@ export default function Toolbar({
                 eventKey="3"
                 onClick={() => {
                   document.getElementById("theText").style.textAlign = "right";
-                  document.getElementById("liveView").style.textAlign = "right";
+                  // document.getElementById("liveView").style.textAlign = "right";
                 }}
               >
                 <FaAlignRight />
@@ -239,8 +263,8 @@ export default function Toolbar({
                 onClick={() => {
                   document.getElementById("theText").style.textAlign =
                     "justify";
-                  document.getElementById("liveView").style.textAlign =
-                    "justify";
+                  // document.getElementById("liveView").style.textAlign =
+                  //   "justify";
                 }}
               >
                 <FaAlignJustify />
@@ -263,7 +287,7 @@ export default function Toolbar({
                 eventKey="1"
                 onClick={(text) => {
                   document.getElementById("theText").style.color = "red";
-                  document.getElementById("liveView").style.color = "red";
+                  // document.getElementById("liveView").style.color = "red";
                 }}
               >
                 Red
@@ -273,7 +297,7 @@ export default function Toolbar({
                 eventKey="2"
                 onClick={() => {
                   document.getElementById("theText").style.color = "green";
-                  document.getElementById("liveView").style.color = "green";
+                  // document.getElementById("liveView").style.color = "green";
                 }}
               >
                 Green
@@ -283,7 +307,7 @@ export default function Toolbar({
                 eventKey="3"
                 onClick={() => {
                   document.getElementById("theText").style.color = "blue";
-                  document.getElementById("liveView").style.color = "blue";
+                  // document.getElementById("liveView").style.color = "blue";
                 }}
               >
                 Blue
@@ -293,7 +317,7 @@ export default function Toolbar({
                 eventKey="4"
                 onClick={() => {
                   document.getElementById("theText").style.color = "white";
-                  document.getElementById("liveView").style.color = "white";
+                  // document.getElementById("liveView").style.color = "white";
                 }}
               >
                 White

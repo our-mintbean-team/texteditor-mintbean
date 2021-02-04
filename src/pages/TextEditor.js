@@ -5,7 +5,6 @@ import UniversalNavbar from "../components/UniversalNavbar";
 import ActionBar from "../components/ActionBar";
 import Toolbar from "../components/Toolbar";
 import Editor from "../components/Editor";
-import LivePreview from "../components/LivePreview";
 import Game from "../components/Game";
 import axios from 'axios';
 import url from "../db.js"
@@ -15,6 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function TextEditor() {
 // State
+  const [timeOfSave, updateSaveTime] = useState("unsaved");
   const [user, updateUser] = useState({
     id:1,
     name:'Public User',
@@ -76,7 +76,8 @@ function TextEditor() {
       if (currentDoc._id===1) {
         const docWithoutId={
           "title":currentDoc.title,
-          "text":currentDoc.text
+          "text":currentDoc.text,
+          "lastSave":new Date().toTimeString()
         }
         const res = await axios.post(`${url}/api/docs`, docWithoutId, config);
         savedDoc = res.data.doc;
@@ -105,10 +106,7 @@ function TextEditor() {
             user={user} 
             updateUser={updateUser} 
           />
-        {/* </Row> */}
 
-        {/* <Row> */}
-          {/* <Col> */}
             <ActionBar 
               user={user} 
               updateUser={updateUser} 
@@ -116,18 +114,23 @@ function TextEditor() {
               updateDoc={updateDoc} 
               url={url}
             />
-          {/* </Col> */}
+
         </Row>
 
         <br />
 
         <Row id='editor-row'>
-          <Toolbar 
-            currentDoc={currentDoc} 
-            updateDoc={updateDoc} 
-            selectionObject={selectionObject}
-          />
-          <Col sm={12} md={6}>
+        <Game />
+
+          <Col md={2}>
+            <Toolbar 
+              currentDoc={currentDoc} 
+              updateDoc={updateDoc} 
+              selectionObject={selectionObject}
+            />
+          </Col>
+          <Col sm={12} md={8} >
+          
             <Editor 
               currentDoc={currentDoc} 
               updateDoc={updateDoc} 
@@ -135,41 +138,24 @@ function TextEditor() {
               url={url}
               saveDoc={saveDoc}
             />
-          </Col>
-          <Col sm={12} md={6}>
-            <LivePreview text={currentDoc.text} />
-          </Col>
-        </Row>
-
-        <Row id="save-row">
-          <Col sm={12} md={6}>
-            <Button 
-              variant="secondary" 
-              onClick={() => 
-                saveDoc()
-              }
-            >
+            <div className="flex-row">
+              <Button 
+                variant="secondary" 
+                onClick={() => {
+                  saveDoc();
+                  updateSaveTime(new Date().toTimeString());
+                }}
+              >
               Save
               </Button>
-            <p>Last save at {currentDoc.lastSave}</p>
-
+            <p>Last save at: {timeOfSave}</p>
+            </div>
           </Col>
+          <Col md={2}></Col>
+      
         </Row>
       </Container>
 
-      <Container fluid={true} className="game__bg">
-        <Row>
-        <div>
-          
-        </div>
-          {/* <p><strong>Title</strong>: {currentDoc.title} - 
-          <strong>Text</strong>: {currentDoc.text} - 
-          <strong>Last Save</strong>:{saveTime} - 
-          <strong>Selection</strong>: <i>String:</i> {selectionObject.string}, <i>index1</i> {selectionObject.startIndex}, <i>index2</i> {selectionObject.endIndex}
-          </p> */}
-          <Game />
-        </Row>
-      </Container>
     </div>
   );
 }

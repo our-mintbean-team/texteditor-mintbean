@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Nav,
   Button,
   ButtonGroup,
   Dropdown,
+  Spinner
 } from "react-bootstrap";
-//import ContentEditable from "react-contenteditable";
 import {
   FaFileAlt,
   FaShareAlt,
@@ -19,8 +19,6 @@ import axios from 'axios';
 
 
 export default function ActionBar({ user, updateDoc, updateUser }) {  
-
-  var { documents } = user;
 
   async function newDoc () {
     try {
@@ -67,10 +65,17 @@ export default function ActionBar({ user, updateDoc, updateUser }) {
         <Dropdown.Menu>
           <Dropdown.Item id="newDoc" onClick={() => newDoc() } >New Doc</Dropdown.Item>
           <Dropdown.Divider id='#doc-container' />
-            {user.documents.map(
+            {
+            user.documents.length === 0 ? 
+            <Dropdown.Item><Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+            </Spinner></Dropdown.Item>
+            :
+            user.documents.map(
               (document) => 
               <Dropdown.Item key={document._id} onClick={() => updateDoc({...document}) } >{document.title}</Dropdown.Item>
-            )}
+            )
+          }
         </Dropdown.Menu>
       </Dropdown>
       <Nav.Item>

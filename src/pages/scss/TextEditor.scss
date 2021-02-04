@@ -8,7 +8,7 @@
 */
 
 #main {
-  height:80vh;
+  height:100vh;
 }
 
 // #header {
@@ -51,6 +51,8 @@
   position: fixed;
   top: 15%;
   left: 0px;
+  // margin-right:2vw;
+  // float: right;
   z-index: 999;
   .dropdown-item {
     width:fit-content;
@@ -70,11 +72,12 @@
 
 #theTitle {
   font-size:2rem;
-  text-decoration: underline;
 }
 
 #theText {
+  height:65vh;
   color:white;
+  outline: -webkit-focus-ring-color auto 1px;
 }
 
 .label {
@@ -110,13 +113,29 @@
   margin:3rem 0 0 2rem;
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
 
 #game {
-  width: 100%;
+  position:absolute;
+  bottom:2vh;
+  right:2vw;
+  // width: 100%;
   max-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  background-color: #495057;
+  color: rgba(82, 82, 82, 0.192);
+  // background-color: #495057;
+}
+
+pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
 }

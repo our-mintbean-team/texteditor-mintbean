@@ -1,12 +1,12 @@
 #main {
   color: white;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("./images/space.jpg");
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./images/space.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("./images/deep-field.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./images/deep-field.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.875;
-  height: 80vh;
+  height: 100vh;
   width: 100%;
 }
 
