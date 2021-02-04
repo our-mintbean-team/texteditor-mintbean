@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/texteditor-mintbean/static/css/main.cfa4e83d.chunk.css",
-    "main.js": "/texteditor-mintbean/static/js/main.6115b23f.chunk.js",
-    "main.js.map": "/texteditor-mintbean/static/js/main.6115b23f.chunk.js.map",
+    "main.js": "/texteditor-mintbean/static/js/main.d9889929.chunk.js",
+    "main.js.map": "/texteditor-mintbean/static/js/main.d9889929.chunk.js.map",
     "runtime-main.js": "/texteditor-mintbean/static/js/runtime-main.5e113b3e.js",
     "runtime-main.js.map": "/texteditor-mintbean/static/js/runtime-main.5e113b3e.js.map",
     "static/css/2.150d169a.chunk.css": "/texteditor-mintbean/static/css/2.150d169a.chunk.css",
@@ -25,6 +25,6 @@
     "static/css/2.150d169a.chunk.css",
     "static/js/2.f4e4e3f3.chunk.js",
     "static/css/main.cfa4e83d.chunk.css",
-    "static/js/main.6115b23f.chunk.js"
+    "static/js/main.d9889929.chunk.js"
   ]
 }
