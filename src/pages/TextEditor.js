@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 
 import UniversalNavbar from "../components/UniversalNavbar";
 import ActionBar from "../components/ActionBar";
@@ -12,38 +12,6 @@ import url from "../db.js"
 import "./scss/TextEditor.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// var hasLoaded = false;
-
-// const getDocs = async () => {
-//   try {
-//       console.log("test");  
-//       const res = await axios.get(`${url}/api/docs`);
-//       console.log(res);
-//       return res.data;
-//   } catch (err) {
-//       console.error(err.message);
-//       // res.status(500).send('Server Error')
-//   }
-// }
-
-// function getDocs () {
-// axios.get(`${url}/api/docs`)
-//   .then(function (response) {
-//     console.log("This is the results of the DB call", response);
-//     return response.data;
-//     // handle success
-//     console.log("this is the response:", response);
-//   })
-//   .catch(function (error) {
-//     // handle error
-//     console.log("this is the error", error);
-//   })
-//   .then(function (response) {
-//     console.log("This is the funtion after .then")
-//     // always executed
-    
-//   });
-// }
 
 function TextEditor() {
 // State
@@ -53,37 +21,20 @@ function TextEditor() {
     documents:[] // Array of ObjectIds
   });  // ObjectId
   const [currentDoc, updateDoc] = useState({
-    id:1, // ObjectId
+    _id:1,
     title:'Document Name', // String
     text:'Insert Text Here',  // String
-    lastSave: new Date() // Date
+    lastSave: new Date().toTimeString() // Date
   });
   const [selectionObject, updateSelection] = useState({
     string:'',
     startIndex:0,
     endIndex:0
   });
-
-  // useEffect( async () => {
-  //   if (hasLoaded===false) {
-  //     await updateUser({
-  //       ...user,
-  //       documents:getDocs()
-  //     })
-  //     hasLoaded = true;
-  //   }
-  // })
-
-  // const mongoDocs = getDocs();
-  // updateUser({
-  //   ...user,
-  //   documents:mongoDocs
-  // })
-
-  var saveTime = currentDoc.lastSave.toTimeString();
-
+ 
 // Selecting text in the editor
   function deconstructSelection(selection) {
+
     const editor = document.querySelector('#theText');
     // const editor = document.querySelector('textarea');
     if (selection.anchorNode===null) {
@@ -95,13 +46,16 @@ function TextEditor() {
     } else if (selection.anchorNode===document.querySelector('#toolbar')) {
       return;  
     } else if (selection.anchorNode.parentNode===editor) {
+      var anchor = selection.anchorOffset;
+      var focus = selection.focusOffset;
+      if (anchor > focus) {
+        anchor = [focus, focus = anchor][0]
+      }
       updateSelection({
         string:selection.toString(),
-        startIndex:selection.anchorOffset,
-        endIndex:selection.focusOffset
-        // startIndex:editor.selectionStart,
-        // endIndex:editor.selectionEnd
-      })
+        startIndex:anchor,
+        endIndex:focus
+      });
     } else {
       updateSelection({
         string:'',
@@ -110,6 +64,32 @@ function TextEditor() {
       })
     }
   }
+
+  async function saveDoc () {
+    try {
+      const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+      };
+      var savedDoc;
+      if (currentDoc._id===1) {
+        const docWithoutId={
+          "title":currentDoc.title,
+          "text":currentDoc.text
+        }
+        const res = await axios.post(`${url}/api/docs`, docWithoutId, config);
+        savedDoc = res.data.doc;
+      } else {
+        const res = await axios.put(`${url}/api/docs/${currentDoc._id}`, currentDoc, config);
+        savedDoc = res.data;
+      }
+      console.log("newDoc", savedDoc);
+      // updateDoc(savedDoc);
+    } catch (err) {
+        console.error(err.message);
+    }
+}
 
 
 // the component itself
@@ -120,15 +100,15 @@ function TextEditor() {
         id="main" 
         onMouseUp={() => { console.log(window.getSelection()); deconstructSelection( window.getSelection() )}} 
       >
-        <Row>
+        <Row id='header'>
           <UniversalNavbar 
             user={user} 
             updateUser={updateUser} 
           />
-        </Row>
+        {/* </Row> */}
 
-        <Row>
-          <Col>
+        {/* <Row> */}
+          {/* <Col> */}
             <ActionBar 
               user={user} 
               updateUser={updateUser} 
@@ -136,7 +116,7 @@ function TextEditor() {
               updateDoc={updateDoc} 
               url={url}
             />
-          </Col>
+          {/* </Col> */}
         </Row>
 
         <br />
@@ -153,21 +133,40 @@ function TextEditor() {
               updateDoc={updateDoc} 
               selectionObject={selectionObject}
               url={url}
+              saveDoc={saveDoc}
             />
           </Col>
           <Col sm={12} md={6}>
             <LivePreview text={currentDoc.text} />
           </Col>
         </Row>
+
+        <Row id="save-row">
+          <Col sm={12} md={6}>
+            <Button 
+              variant="secondary" 
+              onClick={() => 
+                saveDoc()
+              }
+            >
+              Save
+              </Button>
+            <p>Last save at {currentDoc.lastSave}</p>
+
+          </Col>
+        </Row>
       </Container>
 
       <Container fluid={true} className="game__bg">
         <Row>
-          <p><strong>Title</strong>: {currentDoc.title} - 
+        <div>
+          
+        </div>
+          {/* <p><strong>Title</strong>: {currentDoc.title} - 
           <strong>Text</strong>: {currentDoc.text} - 
           <strong>Last Save</strong>:{saveTime} - 
           <strong>Selection</strong>: <i>String:</i> {selectionObject.string}, <i>index1</i> {selectionObject.startIndex}, <i>index2</i> {selectionObject.endIndex}
-          </p>
+          </p> */}
           <Game />
         </Row>
       </Container>
