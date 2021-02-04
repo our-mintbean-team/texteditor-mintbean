@@ -2,7 +2,7 @@
   "name": "texteditor-mintbean",
   "version": "0.1.0",
   "private": true,
-  "homepage":"http://our-mintbean-team.github.io/texteditor-mintbean/",
+  "homepage": "http://our-mintbean-team.github.io/texteditor-mintbean/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
@@ -31,12 +31,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "sass": "sass --watch src/App.scss src/App.css",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

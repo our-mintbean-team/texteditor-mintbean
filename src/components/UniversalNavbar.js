@@ -22,7 +22,10 @@ export default function UniversalNavbar({ user, updateUser }) {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/editor">Text Editor</Nav.Link>
+        <Link to="/editor">
+
+          <Nav.Link>Text Editor</Nav.Link>
+        </Link>
           <Nav.Link href="/about">About the Devs</Nav.Link>
         </Nav>
         <Nav className="ml-auto">
