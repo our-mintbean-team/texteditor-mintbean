@@ -13,9 +13,9 @@ import {
   FaPaintRoller,
   FaClone,
 } from "react-icons/fa";
-import axios from 'axios';
 import url from "../db.js";
 import swal from "@sweetalert/with-react";
+import axios from 'axios';
 
 
 export default function ActionBar({ user, updateDoc, updateUser }) {  
