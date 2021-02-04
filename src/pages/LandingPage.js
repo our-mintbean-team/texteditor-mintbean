@@ -27,7 +27,7 @@ function LandingPage() {
         </Row>
         <Row className="hero__row">
           <Col className="text-center" id="hero__img">
-            <h1>Alien vs Editor</h1>
+            <h1 className="brand-text">Alien vs Editor</h1>
             <h3>The open source editor for all</h3>
             <ButtonGroup>
               <Link to="/editor">

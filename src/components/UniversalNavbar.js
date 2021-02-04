@@ -14,7 +14,7 @@ export default function UniversalNavbar({ user, updateUser }) {
   return (
     <Navbar bg="dark" variant="dark" expand="md" className="navbar__container">
       <Link to="/">
-        <Navbar.Brand>
+        <Navbar.Brand className="brand-text" >
           <GiAlienBug />
           &nbsp; Alien vs Editor
         </Navbar.Brand>

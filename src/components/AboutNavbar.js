@@ -6,7 +6,7 @@ import { FaTextWidth, FaFileAlt, FaUserAstronaut } from "react-icons/fa";
 export default function AboutNavbar() {
   return (
     <Navbar bg="dark" variant="dark" expand="md" className="navbar__container">
-      <Navbar.Brand href="/">
+      <Navbar.Brand className="brand-text" href="/">
         <FaTextWidth />
         &nbsp; Alien vs Editor
       </Navbar.Brand>
