@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Nav,
   NavDropdown,
@@ -15,9 +15,66 @@ import {
   FaClone,
 } from "react-icons/fa";
 import axios from 'axios';
+import url from "../db.js";
 import swal from "@sweetalert/with-react";
 
-export default function ActionBar({ documents, currentDoc, updateDoc }) {
+
+var hasLoaded = false;
+
+// async function getDocs () {
+//   axios.get(`${url}/api/docs`)
+//     .then(function (response) {
+//       console.log("This is the results of the DB call", response);
+//       return response.data;
+      
+//       // handle success
+//       console.log("this is the response:", response);
+//     })
+//     .catch(function (error) {
+//       // handle error
+//       console.log("this is the error", error);
+//     })
+//     .then(function (response) {
+//       console.log("This is the funtion after .then")
+//       // always executed
+//     });
+//   }
+
+
+export default function ActionBar({ user, currentDoc, updateDoc, updateUser }) {  
+  
+  // const documents = user.documents;
+
+
+  // if documents
+  // useEffect({
+  //   const docContainer = document.querySelector('#doc-container');
+  //   var btn = document.createElement("BUTTON");   // Create a <button> element
+  //   btn.innerHTML = "CLICK ME";                   // Insert text
+  //   document.body.appendChild(btn);               // Append <button> to <body>
+  //   = user.documents;
+  // })
+
+
+  async function getDocs () {
+    try {
+      const res = await axios.get(`${url}/api/docs`);
+      const allDocuments = res.data;
+      updateUser({
+        ...user,
+        documents:allDocuments
+      });
+      console.log(user);
+      return user.documents.map(
+        (document) => 
+        <Dropdown.Item key={document._id}>{document.title}</Dropdown.Item>
+      )
+    } catch (err) {
+        console.error(err.message);
+        // res.status(500).send('Server Error')
+    }
+  }
+
   return (
     <Nav id="actionbar">
       <Dropdown as={ButtonGroup}>
@@ -28,9 +85,40 @@ export default function ActionBar({ documents, currentDoc, updateDoc }) {
 
         <Dropdown.Menu>
           <Dropdown.Item id="newDoc">New Doc</Dropdown.Item>
-          <Dropdown.Divider />
-          {documents.length > 0 &&
-            documents.map((id) => <Dropdown.Item key={id}>{id}</Dropdown.Item>)}
+          <Dropdown.Divider id='#doc-container' />
+            {getDocs()}
+            
+            {/* {console.log(typeof(documents))} */}
+            {/* {console.log(documents)} */}
+
+
+            {/* {
+            (documents==undefined) ? 
+            console.log("documents is empty")
+            :
+
+            documents.map((document) => 
+              <Dropdown.Item key={document._id}>{document.title}</Dropdown.Item>)
+            } */}
+        {
+
+          // useEffect( async () => {
+          //     if (hasLoaded===false) {
+          //       const mongoDocuments = await getDocs();
+          //       console.log("This is mongoDocuments after the db call", mongoDocuments)
+          //       await updateUser({
+          //         ...user,
+          //         documents:mongoDocuments
+          //       })
+          //       // await {
+          //         console.log("This is user in actionbar", user);
+          //         console.log("This is where documents is declared in actionbar", user.documents);
+          //       // }
+          //       hasLoaded = true;
+          //     }
+          //   })
+          }
+          
         </Dropdown.Menu>
       </Dropdown>
       <Nav.Item>

@@ -4,9 +4,9 @@ import { Navbar, Nav, Modal, Button, Form } from "react-bootstrap";
 import { FaFileAlt, FaUserAstronaut } from "react-icons/fa";
 import { GiAlienBug } from "react-icons/gi";
 
-export default function UniversalNavbar() {
-  const [show, setShow] = useState(false);
+export default function UniversalNavbar({ user, updateUser }) {
 
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
