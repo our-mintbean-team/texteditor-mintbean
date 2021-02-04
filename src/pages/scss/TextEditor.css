@@ -6,6 +6,10 @@
   align-items: center;
 }
 */
+#main {
+  height: 80vh;
+}
+
 .navbar {
   min-width: 100%;
 }
@@ -41,7 +45,19 @@
 }
 
 #editor-row {
+  overflow-y: auto;
   margin: 0 6rem;
+}
+
+#save-row {
+  height: 5vh;
+  margin: 0 6rem;
+}
+
+#save-row > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 #toolbar {
@@ -80,10 +96,27 @@
 
 #theTitle {
   font-size: 2rem;
+  text-decoration: underline;
 }
 
 #theText {
   color: white;
+}
+
+.label {
+  font-family: Arial, Helvetica, sans-serif  !important;
+  font-size: 1.25rem !important;
+  color: white !important;
+  font-style: italic !important;
+}
+
+.rich-text-label {
+  width: 100%;
+  text-align: right !important;
+}
+
+.markup-label {
+  text-align: left !important;
 }
 
 .main__editor {
@@ -97,6 +130,10 @@
   min-height: 250px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.747);
+}
+
+#liveView {
+  margin: 3rem 0 0 2rem;
 }
 
 #game {
@@ -113,16 +150,5 @@
           align-items: center;
   color: #fff;
   background-color: #495057;
-}
-
-#liveView {
-  margin: 3rem 0 0 2rem;
-}
-
-#liveView .label {
-  font-size: 1.5rem !important;
-  text-align: left !important;
-  color: white  !important;
-  font-family: Arial, Helvetica, sans-serif  !important;
 }
 /*# sourceMappingURL=TextEditor.css.map */

@@ -1,0 +1,37 @@
+maybe use string methods to locate the part of the string that matches, and possibly backwards engineer it from when the markup string is rendered without 
+
+find a function that traces matching text between two strings letter by letter
+
+
+
+
+where a < and > are found, note those indexes, then skip those regions or add xxx characters to the rich string to better locate the matches. use this to line up matching 
+
+
+
+have every keystroke make the letter an object with 
+
+
+
+
+js library markup rich text string comparison diffchecker
+
+
+
+
+text-diff
+main(text1, text2) => diffs
+An array of differences is computed which describe the transformation of text1 into text2. Each difference is an array. The first element specifies if it is an insertion (1), a deletion (-1) or an equality (0). The second element specifies the affected text.
+
+main("Good dog", "Bad dog") => [(-1, "Goo"), (1, "Ba"), (0, "d dog")]
+
+concatenate all 1's into one string, find length of string, add this length to end #
+
+
+2 tasks: 
+1) find real start index
+take original rich string's start index, 
+
+
+2) find real stop index
+take original rich string's stop index, 

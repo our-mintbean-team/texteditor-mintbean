@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Nav,
   Button,
@@ -13,22 +13,64 @@ import {
   FaPaintRoller,
   FaClone,
 } from "react-icons/fa";
-import swal from "sweetalert";
+import axios from 'axios';
+import url from "../db.js";
+import swal from "@sweetalert/with-react";
 
-export default function ActionBar({ documents, currentDoc, updateDoc }) {
+
+export default function ActionBar({ user, updateDoc, updateUser }) {  
+
+  var { documents } = user;
+
+  async function newDoc () {
+    try {
+      const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+      };
+      const initDoc = {
+        "title":"New Document",
+        "text":" "
+      }
+      const res = await axios.post(`${url}/api/docs`, initDoc, config);
+      const newDoc = res.data.doc;
+      console.log("newDoc", newDoc);
+      updateDoc(newDoc);
+    } catch (err) {
+        console.error(err.message);
+    }
+}
+
+  async function getDocs () {
+      try {
+        const res = await axios.get(`${url}/api/docs`);
+        const allDocuments = res.data;
+        updateUser({
+          ...user,
+          documents:allDocuments
+        });
+        return user.documents;
+      } catch (err) {
+          console.error(err.message);
+      }
+  }
+
   return (
     <Nav id="actionbar">
-      <Dropdown as={ButtonGroup}>
+      <Dropdown as={ButtonGroup} onClick={() => getDocs()}>
         <Dropdown.Toggle split variant="secondary" id="dropdown-split-basic">
           <FaFileAlt />
           &nbsp;Documents&nbsp;
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item id="newDoc">New Doc</Dropdown.Item>
-          <Dropdown.Divider />
-          {documents.length > 0 &&
-            documents.map((id) => <Dropdown.Item key={id}>{id}</Dropdown.Item>)}
+          <Dropdown.Item id="newDoc" onClick={() => newDoc() } >New Doc</Dropdown.Item>
+          <Dropdown.Divider id='#doc-container' />
+            {user.documents.map(
+              (document) => 
+              <Dropdown.Item key={document._id} onClick={() => updateDoc({...document}) } >{document.title}</Dropdown.Item>
+            )}
         </Dropdown.Menu>
       </Dropdown>
       <Nav.Item>

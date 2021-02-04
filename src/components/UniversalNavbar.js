@@ -5,9 +5,9 @@ import { FaFileAlt, FaUserAstronaut } from "react-icons/fa";
 import { GiAlienBug } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
-export default function UniversalNavbar() {
-  const [show, setShow] = useState(false);
+export default function UniversalNavbar({ user, updateUser }) {
 
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
